@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-g",   "${workspaceFolder}\\src\\*.cpp", 
+                        "${workspaceFolder}\\src\\math\\*.cpp",
+                        "${workspaceFolder}\\src\\drawing\\*.cpp",
+                "-o", "engine.exe",
+                "-I", "${workspaceFolder}\\libraries\\GLFW\\include",
+                "-L", "${workspaceFolder}\\libraries\\GLFW\\lib-mingw-w64",
+                "-lglfw3",
+                "-lopengl32",
+                "-mwindows"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
