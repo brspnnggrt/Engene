@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/libraries/GLFW/include"
+                "${workspaceFolder}/libraries/glfw-3.2.1.bin.WIN64/include"
             ],
             "defines": [
                 "_DEBUG",

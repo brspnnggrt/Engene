@@ -11,8 +11,8 @@
                         "${workspaceFolder}\\src\\math\\*.cpp",
                         "${workspaceFolder}\\src\\drawing\\*.cpp",
                 "-o", "engine.exe",
-                "-I", "${workspaceFolder}\\libraries\\GLFW\\include",
-                "-L", "${workspaceFolder}\\libraries\\GLFW\\lib-mingw-w64",
+                "-I", "${workspaceFolder}\\libraries\\glfw-3.2.1.bin.WIN64\\include",
+                "-L", "${workspaceFolder}\\libraries\\glfw-3.2.1.bin.WIN64\\lib-mingw-w64",
                 "-lglfw3",
                 "-lopengl32",
                 "-mwindows"
