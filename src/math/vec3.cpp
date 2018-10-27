@@ -2,18 +2,6 @@
 
 namespace engene { namespace math {
 
-	vec3::vec3() {
-		x = 0.0f;
-		y = 0.0f;
-		z = 0.0f;
-	}
-
-	vec3::vec3(const float& _x, const float& _y, const float& _z) {
-		x = _x;
-		y = _y;
-		z = _z;
-	}
-
 	vec3& vec3::add(const vec3& other) {
 		x += other.x;
 		y += other.y;

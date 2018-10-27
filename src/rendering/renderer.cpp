@@ -6,15 +6,19 @@ namespace engene { namespace rendering {
 
     
 
-    // renderer::renderer() {
+    renderer::renderer() {
 
-    //     // engene::math.triangle triangle{ 1.0f, 0.0f, 0.5f};
+        engene::math::vec3 vector = { 1.0f, 0.1f, 0.4f };
 
+        engene::math::triangle triangle = { { { 1.0f, 0.1f, 0.4f } , { 1.0f, 0.1f, 0.4f }, { 1.0f, 0.1f, 0.4f } } };
 
-    //     // cube.triangles = {
-    //     //     { 0.0f, 0.0f, 0.0f,     0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 0.0f }
-    //     // };
-    // };
+        engene::drawing::mesh meshCube;
+
+        meshCube.triangles = {
+            { 0.0f, 0.0f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 1.0f, 0.0f },
+		    { 0.0f, 0.0f, 0.0f,    1.0f, 1.0f, 0.0f,    1.0f, 0.0f, 0.0f }
+        };
+    };
 
 	int renderer::render()
     {

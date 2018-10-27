@@ -7,7 +7,7 @@ namespace engene { namespace math {
 
 	struct triangle
 	{
-		engene::math::vec3 p[3];
+		engene::math::vec3 points[3];
     };
 
 } }

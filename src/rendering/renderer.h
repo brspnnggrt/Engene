@@ -13,6 +13,7 @@ class renderer
     engene::drawing::mesh cube;
 
   public:
+    renderer();
     int render();
 };
 
