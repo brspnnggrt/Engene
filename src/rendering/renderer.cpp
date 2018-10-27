@@ -4,17 +4,9 @@
 
 namespace engene { namespace rendering {
 
-    
-
     renderer::renderer() {
 
-        engene::math::vec3 vector = { 1.0f, 0.1f, 0.4f };
-
-        engene::math::triangle triangle = { { { 1.0f, 0.1f, 0.4f } , { 1.0f, 0.1f, 0.4f }, { 1.0f, 0.1f, 0.4f } } };
-
-        engene::drawing::mesh meshCube;
-
-        meshCube.triangles = {
+        cube.triangles = {
             { 0.0f, 0.0f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 1.0f, 0.0f },
 		    { 0.0f, 0.0f, 0.0f,    1.0f, 1.0f, 0.0f,    1.0f, 0.0f, 0.0f }
         };
