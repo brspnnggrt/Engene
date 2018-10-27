@@ -4,15 +4,6 @@
 #include "drawing/draw.h"
 #include "rendering/renderer.h"
 
-// void render(int count)
-// {
-//     if (count == 0)
-//         count = 1;
-//     engene::math::vec2 start(5 * count, 0);
-//     engene::math::vec2 end(200 % count, 500 % count);
-//     engene::drawing::drawLine(start, end);
-// }
-
 int main(void)
 {
     GLFWwindow* window;
@@ -34,12 +25,12 @@ int main(void)
 	glfwSwapInterval(1);
 
 	// Set up viewport
-	glViewport(0, 0, 400, 400);
+	glViewport(0, 0, engene::rendering::renderer::width, engene::rendering::renderer::height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	// see https://www.opengl.org/sdk/docs/man2/xhtml/glOrtho.xml
-	glOrtho(0.0, 400.0, 0.0, 400.0, 0.0, 1.0); // this creates a canvas you can do 2D drawing on
+	glOrtho(0.0, engene::rendering::renderer::width, 0.0, engene::rendering::renderer::height, 0.0, 1.0); // this creates a canvas you can do 2D drawing on
 
     int count = 0;
 
