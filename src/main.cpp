@@ -2,15 +2,16 @@
 #include <GLFW/glfw3.h>
 #include "math/vec2.h"
 #include "drawing/draw.h"
+#include "rendering/renderer.h"
 
-void render(int count)
-{
-    if (count == 0)
-        count = 1;
-    engene::math::vec2 start(5 * count, 0);
-    engene::math::vec2 end(200 % count, 500 % count);
-    engene::drawing::drawLine(start, end);
-}
+// void render(int count)
+// {
+//     if (count == 0)
+//         count = 1;
+//     engene::math::vec2 start(5 * count, 0);
+//     engene::math::vec2 end(200 % count, 500 % count);
+//     engene::drawing::drawLine(start, end);
+// }
 
 int main(void)
 {
@@ -46,7 +47,8 @@ int main(void)
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
-		render(count % 100);
+		engene::rendering::renderer fff;
+        int a = fff.render();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

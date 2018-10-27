@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <iostream>
-#include "triangle.h"
+#include "../math/triangle.h"
 
 namespace engene { namespace drawing {
 
