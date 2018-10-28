@@ -2,34 +2,38 @@
 
 #include <iostream>
 
-namespace engene { namespace math {
+namespace Engene
+{
+namespace Math
+{
 
-	struct vec2
-	{
-		float x, y;
+struct Vec2
+{
+	float x, y;
 
-		vec2();
-		vec2(const float& x, const float& y);
+	Vec2();
+	Vec2(const float &x, const float &y);
 
-		vec2& add(const vec2& other);
-		vec2& subscract(const vec2& other);
-		vec2& multiply(const vec2& other);
-		vec2& divide(const vec2& other);
+	Vec2 &add(const Vec2 &other);
+	Vec2 &subscract(const Vec2 &other);
+	Vec2 &multiply(const Vec2 &other);
+	Vec2 &divide(const Vec2 &other);
 
-		friend vec2 operator+(vec2 left, const vec2& right);
-		friend vec2 operator-(vec2 left, const vec2& right);
-		friend vec2 operator*(vec2 left, const vec2& right);
-		friend vec2 operator/(vec2 left, const vec2& right);
+	friend Vec2 operator+(Vec2 left, const Vec2 &right);
+	friend Vec2 operator-(Vec2 left, const Vec2 &right);
+	friend Vec2 operator*(Vec2 left, const Vec2 &right);
+	friend Vec2 operator/(Vec2 left, const Vec2 &right);
 
-		bool operator==(vec2& other);
-		bool operator!=(vec2& other);
+	bool operator==(Vec2 &other);
+	bool operator!=(Vec2 &other);
 
-		vec2& operator+=(const vec2& other);
-		vec2& operator-=(const vec2& other);
-		vec2& operator*=(const vec2& other);
-		vec2& operator/=(const vec2& other);
+	Vec2 &operator+=(const Vec2 &other);
+	Vec2 &operator-=(const Vec2 &other);
+	Vec2 &operator*=(const Vec2 &other);
+	Vec2 &operator/=(const Vec2 &other);
 
-		friend std::ostream& operator<<(std::ostream&, const vec2& vector);
-	};
+	friend std::ostream &operator<<(std::ostream &, const Vec2 &vector);
+};
 
-} }
+} // namespace Math
+} // namespace Engene

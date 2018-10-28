@@ -2,29 +2,29 @@
 
 #include <chrono>
 #include "../drawing/mesh.h"
-#include "../math/mat4.h"
+#include "../math/Mat4.h"
 #include <GLFW/glfw3.h>
 
-namespace engene
+namespace Engene
 {
-namespace rendering
+ namespace Rendering
 {
 
-class renderer
+class Renderer
 {
 private:
-  engene::drawing::mesh cube;
-  engene::math::mat4 projectionMatrix;
+  Engene::Drawing::Mesh cube;
+  Engene::Math::Mat4 projectionMatrix;
 
   float fTheta;
   std::chrono::system_clock::time_point renderTimeStamp = std::chrono::system_clock::now();
 
 public:
-  static float width;
-  static float height;
-  renderer();
-  int render(GLFWwindow* win, int count);
+  static constexpr float WIDTH = 400; 
+  static constexpr float HEIGHT = 400;
+  Renderer();
+  int Render(GLFWwindow* win, int count);
 };
 
-} // namespace rendering
-} // namespace engene
+} //  namespace Rendering
+} // namespace Engene

@@ -3,39 +3,39 @@
 #include <iostream>
 #include "mat4.h"
 
-namespace engene
+namespace Engene
 {
-namespace math
+namespace Math
 {
 
-struct vec3
+struct Vec3
 {
 	float x, y, z;
 
-	vec3 &add(const vec3 &other);
-	vec3 &subscract(const vec3 &other);
-	vec3 &multiply(const vec3 &other);
-	vec3 &divide(const vec3 &other);
+	Vec3 &add(const Vec3 &other);
+	Vec3 &subscract(const Vec3 &other);
+	Vec3 &multiply(const Vec3 &other);
+	Vec3 &divide(const Vec3 &other);
 
-	friend vec3 operator+(vec3 left, const vec3 &right);
-	friend vec3 operator-(vec3 left, const vec3 &right);
-	friend vec3 operator*(vec3 left, const vec3 &right);
-	friend vec3 operator/(vec3 left, const vec3 &right);
+	friend Vec3 operator+(Vec3 left, const Vec3 &right);
+	friend Vec3 operator-(Vec3 left, const Vec3 &right);
+	friend Vec3 operator*(Vec3 left, const Vec3 &right);
+	friend Vec3 operator/(Vec3 left, const Vec3 &right);
 
-	friend vec3 operator*(vec3 left, const mat4 &right);
+	friend Vec3 operator*(Vec3 left, const Mat4 &right);
 
-	bool operator==(vec3 &other);
-	bool operator!=(vec3 &other);
+	bool operator==(Vec3 &other);
+	bool operator!=(Vec3 &other);
 
-	vec3 &operator+=(const vec3 &other);
-	vec3 &operator-=(const vec3 &other);
-	vec3 &operator*=(const vec3 &other);
-	vec3 &operator/=(const vec3 &other);
+	Vec3 &operator+=(const Vec3 &other);
+	Vec3 &operator-=(const Vec3 &other);
+	Vec3 &operator*=(const Vec3 &other);
+	Vec3 &operator/=(const Vec3 &other);
 
-	vec3 &operator*=(const mat4 &matrix);
+	Vec3 &operator*=(const Mat4 &matrix);
 
-	friend std::ostream &operator<<(std::ostream &, const vec3 &vector);
+	friend std::ostream &operator<<(std::ostream &, const Vec3 &vector);
 };
 
 } // namespace math
-} // namespace engene
+} // namespace Engene

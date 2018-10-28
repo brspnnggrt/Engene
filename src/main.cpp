@@ -1,6 +1,6 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
-#include "math/vec2.h"
+#include "math/Vec2.h"
 #include "drawing/draw.h"
 #include "rendering/renderer.h"
 
@@ -13,7 +13,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(engene::rendering::renderer::width, engene::rendering::renderer::height, "Engene", NULL, NULL);
+    window = glfwCreateWindow(Engene::Rendering::Renderer::WIDTH, Engene::Rendering::Renderer::HEIGHT, "Engene", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -25,22 +25,22 @@ int main(void)
 	glfwSwapInterval(1);
 
 	// Set up viewport
-	glViewport(0, 0, engene::rendering::renderer::width, engene::rendering::renderer::height);
+	glViewport(0, 0, Engene::Rendering::Renderer::WIDTH, Engene::Rendering::Renderer::HEIGHT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	// see https://www.opengl.org/sdk/docs/man2/xhtml/glOrtho.xml
-	glOrtho(0.0, engene::rendering::renderer::width, 0.0, engene::rendering::renderer::height, 0.0, 1.0); // this creates a canvas you can do 2D drawing on
+	glOrtho(0.0, Engene::Rendering::Renderer::WIDTH, 0.0, Engene::Rendering::Renderer::HEIGHT, 0.0, 1.0); // this creates a canvas you can do 2D drawing on
 
     int count = 0;
-    engene::rendering::renderer fff;
+    Engene::Rendering::Renderer renderer;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
 		
-        int a = fff.render(window, count);
+        int a = renderer.Render(window, count);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

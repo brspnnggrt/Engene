@@ -1,14 +1,14 @@
 #pragma once
 
-namespace engene
+namespace Engene
 {
-namespace math
+namespace Math
 {
 
-struct mat4
+struct Mat4
 {
 	float cells[4][4] = { { 0 } };	// row by column, initialize all to 0
 };
 
 } // namespace math
-} // namespace engene
+} // namespace Engene

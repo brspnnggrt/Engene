@@ -3,11 +3,15 @@
 #include <iostream>
 #include "vec3.h"
 
-namespace engene { namespace math {
+namespace Engene
+{
+namespace Math
+{
 
-	struct triangle
-	{
-		engene::math::vec3 points[3];
-    };
+struct Triangle
+{
+	Engene::Math::Vec3 points[3];
+};
 
-} }
+} // namespace Math
+} // namespace Engene

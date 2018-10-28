@@ -4,11 +4,15 @@
 #include <iostream>
 #include "../math/triangle.h"
 
-namespace engene { namespace drawing {
+namespace Engene
+{
+namespace Drawing
+{
 
-	struct mesh
-	{
-		std::vector<engene::math::triangle> triangles;
-    };
+struct Mesh
+{
+	std::vector<Engene::Math::Triangle> triangles;
+};
 
-} }
+} // namespace Drawing
+} // namespace Engene

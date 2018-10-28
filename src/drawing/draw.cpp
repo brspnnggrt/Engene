@@ -1,13 +1,13 @@
 #include "draw.h"
-#include "../math/vec2.h"
+#include "../math/Vec2.h"
 #include <GLFW/glfw3.h>
 
-namespace engene
+namespace Engene
 {
-namespace drawing
+namespace Drawing
 {
 
-void drawLine(engene::math::vec3 start, engene::math::vec3 end)
+void DrawLine(Engene::Math::Vec3 start, Engene::Math::Vec3 end)
 {
     glPointSize(10);
     glLineWidth(2.5);
@@ -18,12 +18,12 @@ void drawLine(engene::math::vec3 start, engene::math::vec3 end)
     glEnd();
 }
 
-void drawTriangle(engene::math::triangle triangle)
+void DrawTriangle(Engene::Math::Triangle triangle)
 {
-    drawLine(triangle.points[0], triangle.points[1]);
-    drawLine(triangle.points[1], triangle.points[2]);
-    drawLine(triangle.points[2], triangle.points[0]);
+    DrawLine(triangle.points[0], triangle.points[1]);
+    DrawLine(triangle.points[1], triangle.points[2]);
+    DrawLine(triangle.points[2], triangle.points[0]);
 }
 
 } // namespace drawing
-} // namespace engene
+} // namespace Engene

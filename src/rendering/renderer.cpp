@@ -2,19 +2,17 @@
 #include "../drawing/mesh.h"
 #include "../drawing/draw.h"
 #include "../math/triangle.h"
-#include "../math/vec3.h"
+#include "../math/Vec3.h"
+#include "projector.h"
 #include <GLFW/glfw3.h>
 #include <math.h>
 
-namespace engene
+namespace Engene
 {
-namespace rendering
+namespace Rendering
 {
 
-float renderer::width = 400;
-float renderer::height = 400;
-
-renderer::renderer()
+Renderer::Renderer()
 {
     cube.triangles = {
         // SOUTH
@@ -42,7 +40,7 @@ renderer::renderer()
         {1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f}};
 };
 
-int renderer::render(GLFWwindow *win, int count)
+int Renderer::Render(GLFWwindow *win, int count)
 {
     std::chrono::system_clock::time_point nowTimeStamp = std::chrono::system_clock::now();
     std::chrono::duration<double> timepassed = renderTimeStamp - nowTimeStamp;
@@ -61,7 +59,7 @@ int renderer::render(GLFWwindow *win, int count)
     float fNear = 0.1f;
     float fFar = 1000.0f;
     float fFov = 90.0f;
-    float fAspectRatio = (float)height / (float)width;
+    float fAspectRatio = (float)HEIGHT / (float)WIDTH;
     float fFovRad = 1.0f / tanf(fFov * 0.5f / 180.0f * 3.1459f); // convert from degrees to radiance
 
     projectionMatrix.cells[0][0] = fAspectRatio * fFovRad;
@@ -72,38 +70,27 @@ int renderer::render(GLFWwindow *win, int count)
     projectionMatrix.cells[3][3] = 0.0f;
 
     // Set up rotation matrice
-    engene::math::mat4 matRotZ, matRotX;
     fTheta += 1.0f * count / 100;
-
-    // Rotation Z
-    matRotZ.cells[0][0] = cosf(fTheta);
-    matRotZ.cells[0][1] = sinf(fTheta);
-    matRotZ.cells[1][0] = -sinf(fTheta);
-    matRotZ.cells[1][1] = cosf(fTheta);
-    matRotZ.cells[2][2] = 1;
-    matRotZ.cells[3][3] = 1;
-
-    // Rotation X
-    matRotX.cells[0][0] = 1;
-    matRotX.cells[1][1] = cosf(fTheta * 0.5f);
-    matRotX.cells[1][2] = sinf(fTheta * 0.5f);
-    matRotX.cells[2][1] = -sinf(fTheta * 0.5f);
-    matRotX.cells[2][2] = cosf(fTheta * 0.5f);
-    matRotX.cells[3][3] = 1;
 
     for (auto triangle : cube.triangles)
     {
-        engene::math::triangle triProjected, triTranslated, triRotatedZ, triRotatedZX;
+        Engene::Math::Triangle triProjected, triTranslated, triRotatedZ, triRotatedZX;
+
+        Engene::Math::Mat4 rotateZ = Projector::CreateRotationMatrix(fTheta, Projector::Axis::Z);
+        Engene::Math::Mat4 rotateX = Projector::CreateRotationMatrix(fTheta, Projector::Axis::X);
 
         // Rotate in Z-Axis
-        triRotatedZ.points[0] = triangle.points[0] * matRotZ;
-        triRotatedZ.points[1] = triangle.points[1] * matRotZ;
-        triRotatedZ.points[2] = triangle.points[2] * matRotZ;
+        triRotatedZ.points[0] = triangle.points[0] * rotateZ;
+        triRotatedZ.points[1] = triangle.points[1] * rotateZ;
+        triRotatedZ.points[2] = triangle.points[2] * rotateZ;
+        // triRotatedZ.points[0] = triangle.points[0] * rotateZ;
+        // triRotatedZ.points[1] = triangle.points[1] * rotateZ;
+        // triRotatedZ.points[2] = triangle.points[2] * rotateZ;
 
         // Rotate in X-Axis
-        triRotatedZX.points[0] = triangle.points[0] * matRotX;
-        triRotatedZX.points[1] = triangle.points[1] * matRotX;
-        triRotatedZX.points[2] = triangle.points[2] * matRotX;
+        triRotatedZX.points[0] = triangle.points[0] * rotateX;
+        triRotatedZX.points[1] = triangle.points[1] * rotateX;
+        triRotatedZX.points[2] = triangle.points[2] * rotateX;
 
         // Offset into the screen
         triTranslated = triRotatedZX;
@@ -123,18 +110,23 @@ int renderer::render(GLFWwindow *win, int count)
         triProjected.points[1].y += 1.0f;
         triProjected.points[2].x += 1.0f;
         triProjected.points[2].y += 1.0f;
-        triProjected.points[0].x *= 0.5f * (float)width;
-        triProjected.points[0].y *= 0.5f * (float)height;
-        triProjected.points[1].x *= 0.5f * (float)width;
-        triProjected.points[1].y *= 0.5f * (float)height;
-        triProjected.points[2].x *= 0.5f * (float)width;
-        triProjected.points[2].y *= 0.5f * (float)height;
+        triProjected.points[0].x *= 0.5f * (float)WIDTH;
+        triProjected.points[0].y *= 0.5f * (float)HEIGHT;
+        triProjected.points[1].x *= 0.5f * (float)WIDTH;
+        triProjected.points[1].y *= 0.5f * (float)HEIGHT;
+        triProjected.points[2].x *= 0.5f * (float)WIDTH;
+        triProjected.points[2].y *= 0.5f * (float)HEIGHT;
 
-        engene::drawing::drawTriangle(triProjected);
+        Engene::Drawing::DrawTriangle(triProjected);
+
+        // triProjected.points[0] * Math::Vec3 {1, 2, 3};
+        // triProjected.points[0] * Math::Vec3 {1, 2, 3};
+        // triProjected.points[0] * Math::Vec3 {1, 2, 3};
+        // Engene::Drawing::DrawTriangle(triProjected);
     }
 
     return 1;
 }
 
-} // namespace rendering
-} // namespace engene
+} //  namespace Rendering
+} // namespace Engene

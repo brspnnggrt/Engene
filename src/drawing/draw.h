@@ -1,15 +1,15 @@
 #pragma once
 
 #include "../math/triangle.h"
-#include "../math/vec2.h"
+#include "../math/Vec2.h"
 
-namespace engene
+namespace Engene
 {
-namespace drawing
+namespace Drawing
 {
 
-void drawLine(engene::math::vec2 start, engene::math::vec2 end);
-void drawTriangle(engene::math::triangle triangle);
+void DrawLine(Engene::Math::Vec2 start, Engene::Math::Vec2 end);
+void DrawTriangle(Engene::Math::Triangle triangle);
 
 } // namespace drawing
-} // namespace engene
+} // namespace Engene
