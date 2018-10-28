@@ -7,9 +7,9 @@ namespace Engene
 namespace Rendering
 {
 
-Engene::Math::Mat4 Projector::CreateRotationMatrix(float fTheta, Axis axis)
+Engene::Math::Mat4 Projector::CreateRotationMatrix(Axis axis, float fTheta)
 {
-    Engene::Math::Mat4 matrix = Engene::Math::Mat4();
+    Engene::Math::Mat4 matrix;
     switch (axis)
     {
         case X:
@@ -48,5 +48,16 @@ Engene::Math::Mat4 Projector::CreateRotationMatrix(float fTheta, Axis axis)
     }
     return matrix;
 }
+
+Engene::Math::Mat4 Projector::CreateScalingMatrix(float scale)
+{
+    Engene::Math::Mat4 matrix;
+    matrix.cells[0][0] = scale;
+    matrix.cells[1][1] = scale;
+    matrix.cells[2][2] = scale;
+    matrix.cells[3][3] = 1;
+    return matrix;
+};
+
 } //  namespace Rendering
 } // namespace Engene

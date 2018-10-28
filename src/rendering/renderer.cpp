@@ -70,14 +70,14 @@ int Renderer::Render(GLFWwindow *win, int count)
     projectionMatrix.cells[3][3] = 0.0f;
 
     // Set up rotation matrice
-    fTheta += 1.0f * count / 100;
+    fTheta += 1.0f * count / 1000;
 
     for (auto triangle : cube.triangles)
     {
         Engene::Math::Triangle triProjected, triTranslated, triRotatedZ, triRotatedZX;
 
-        Engene::Math::Mat4 rotateZ = Projector::CreateRotationMatrix(fTheta, Projector::Axis::Z);
-        Engene::Math::Mat4 rotateX = Projector::CreateRotationMatrix(fTheta, Projector::Axis::X);
+        Engene::Math::Mat4 rotateZ = Projector::CreateRotationMatrix(Projector::Axis::Z, fTheta);
+        Engene::Math::Mat4 rotateX = Projector::CreateRotationMatrix(Projector::Axis::X, fTheta);
 
         // Rotate in Z-Axis
         triRotatedZ.points[0] = triangle.points[0] * rotateZ;
@@ -103,6 +103,20 @@ int Renderer::Render(GLFWwindow *win, int count)
         triProjected.points[1] = triTranslated.points[1] * projectionMatrix;
         triProjected.points[2] = triTranslated.points[2] * projectionMatrix;
 
+        Math::Triangle triProjected2;
+
+        triProjected2.points[0] = triProjected.points[0];
+        triProjected2.points[1] = triProjected.points[1];
+        triProjected2.points[2] = triProjected.points[2];
+
+        triProjected.points[0] *= Projector::CreateScalingMatrix(1);
+        triProjected.points[1] *= Projector::CreateScalingMatrix(1);
+        triProjected.points[2] *= Projector::CreateScalingMatrix(1);
+
+        triProjected2.points[0] *= Projector::CreateScalingMatrix(2);
+        triProjected2.points[1] *= Projector::CreateScalingMatrix(2);
+        triProjected2.points[2] *= Projector::CreateScalingMatrix(2);
+
         // Scale into view
         triProjected.points[0].x += 1.0f;
         triProjected.points[0].y += 1.0f;
@@ -117,12 +131,21 @@ int Renderer::Render(GLFWwindow *win, int count)
         triProjected.points[2].x *= 0.5f * (float)WIDTH;
         triProjected.points[2].y *= 0.5f * (float)HEIGHT;
 
-        Engene::Drawing::DrawTriangle(triProjected);
+        triProjected2.points[0].x += 1.0f;
+        triProjected2.points[0].y += 1.0f;
+        triProjected2.points[1].x += 1.0f;
+        triProjected2.points[1].y += 1.0f;
+        triProjected2.points[2].x += 1.0f;
+        triProjected2.points[2].y += 1.0f;
+        triProjected2.points[0].x *= 0.5f * (float)WIDTH;
+        triProjected2.points[0].y *= 0.5f * (float)HEIGHT;
+        triProjected2.points[1].x *= 0.5f * (float)WIDTH;
+        triProjected2.points[1].y *= 0.5f * (float)HEIGHT;
+        triProjected2.points[2].x *= 0.5f * (float)WIDTH;
+        triProjected2.points[2].y *= 0.5f * (float)HEIGHT;
 
-        // triProjected.points[0] * Math::Vec3 {1, 2, 3};
-        // triProjected.points[0] * Math::Vec3 {1, 2, 3};
-        // triProjected.points[0] * Math::Vec3 {1, 2, 3};
-        // Engene::Drawing::DrawTriangle(triProjected);
+        Engene::Drawing::DrawBoard::DrawTriangle(triProjected2, Drawing::DrawBoard::Color::BLUE);
+        Engene::Drawing::DrawBoard::DrawTriangle(triProjected, Drawing::DrawBoard::Color::RED);
     }
 
     return 1;

@@ -20,8 +20,8 @@ private:
   std::chrono::system_clock::time_point renderTimeStamp = std::chrono::system_clock::now();
 
 public:
-  static constexpr float WIDTH = 400; 
-  static constexpr float HEIGHT = 400;
+  static constexpr float WIDTH = 1600; 
+  static constexpr float HEIGHT = 1200;
   Renderer();
   int Render(GLFWwindow* win, int count);
 };

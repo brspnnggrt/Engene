@@ -120,7 +120,9 @@ Vec3 &Vec3::operator*=(const Mat4 &matrix)
 		result.y /= w;
 		result.z /= w;
 	}
-	return result;
+	x = result.x;
+	y = result.y;
+	z = result.z;	
 }
 
 std::ostream &operator<<(std::ostream &stream, const Vec3 &vector)

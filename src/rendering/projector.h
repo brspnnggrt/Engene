@@ -11,7 +11,8 @@ class Projector
 {
   public:
     enum Axis { X, Y, Z };
-    static Engene::Math::Mat4 CreateRotationMatrix(float fTheta, Axis axis);
+    static Engene::Math::Mat4 CreateRotationMatrix(Axis axis, float fTheta);
+    static Engene::Math::Mat4 CreateScalingMatrix(float scale);
 };
 
 } //  namespace Rendering

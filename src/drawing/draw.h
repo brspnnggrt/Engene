@@ -8,8 +8,24 @@ namespace Engene
 namespace Drawing
 {
 
-void DrawLine(Engene::Math::Vec2 start, Engene::Math::Vec2 end);
-void DrawTriangle(Engene::Math::Triangle triangle);
+class DrawBoard
+{
+  public:
+  	struct Color
+	{
+	  public:
+		float R;
+		float G;
+		float B;
+		static const Color RED;
+		static const Color GREEN;
+		static const Color BLUE;
+		static const Color WHITE;
+		static const Color BLACK;
+	};
+	static void DrawLine(Engene::Math::Vec3 start, Engene::Math::Vec3 end, Color color = Color::WHITE);
+	static void DrawTriangle(Engene::Math::Triangle triangle, Color color = Color::WHITE);
+};
 
-} // namespace drawing
+} // namespace Drawing
 } // namespace Engene
