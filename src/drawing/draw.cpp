@@ -11,9 +11,9 @@ void drawLine(engene::math::vec3 start, engene::math::vec3 end)
 {
     glPointSize(10);
     glLineWidth(2.5);
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_LINES);
-    glVertex3f(start.x, end.y, 0.0);
+    glVertex3f(start.x, start.y, 0.0);
     glVertex3f(end.x, end.y, 0.0);
     glEnd();
 }

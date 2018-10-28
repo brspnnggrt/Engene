@@ -13,7 +13,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(engene::rendering::renderer::width, engene::rendering::renderer::height, "Engene", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -33,13 +33,14 @@ int main(void)
 	glOrtho(0.0, engene::rendering::renderer::width, 0.0, engene::rendering::renderer::height, 0.0, 1.0); // this creates a canvas you can do 2D drawing on
 
     int count = 0;
+    engene::rendering::renderer fff;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
-		engene::rendering::renderer fff;
-        int a = fff.render();
+		
+        int a = fff.render(window, count);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
