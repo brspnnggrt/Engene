@@ -71,7 +71,7 @@ int renderer::render(GLFWwindow *win, int count)
     projectionMatrix.cells[2][3] = 1.0f;
     projectionMatrix.cells[3][3] = 0.0f;
 
-    // Set up rotation matrices
+    // Set up rotation matrice
     engene::math::mat4 matRotZ, matRotX;
     fTheta += 1.0f * count / 100;
 
