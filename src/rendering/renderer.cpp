@@ -75,7 +75,7 @@ int renderer::render(GLFWwindow *win, int count)
     engene::math::mat4 matRotZ, matRotX;
     fTheta += 1.0f * count / 100;
 
-    // Rotation Z-
+    // Rotation Z
     matRotZ.cells[0][0] = cosf(fTheta);
     matRotZ.cells[0][1] = sinf(fTheta);
     matRotZ.cells[1][0] = -sinf(fTheta);
