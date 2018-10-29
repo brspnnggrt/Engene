@@ -108,18 +108,18 @@ Vec3 &Vec3::operator/=(const Vec3 &other)
 Vec3 &Vec3::operator*=(const Mat4 &matrix)
 {
 	Vec3 result = {
-		x * matrix.cells[0][0] + y * matrix.cells[1][0] + z * matrix.cells[2][0] + matrix.cells[3][0],
-		x * matrix.cells[0][1] + y * matrix.cells[1][1] + z * matrix.cells[2][1] + matrix.cells[3][1],
-		x * matrix.cells[0][2] + y * matrix.cells[1][2] + z * matrix.cells[2][2] + matrix.cells[3][2],
+		x * matrix.cells[0][0] + y * matrix.cells[0][1] + z * matrix.cells[0][2] + matrix.cells[0][3],
+		x * matrix.cells[1][0] + y * matrix.cells[1][1] + z * matrix.cells[1][2] + matrix.cells[1][3],
+		x * matrix.cells[2][0] + y * matrix.cells[2][1] + z * matrix.cells[2][2] + matrix.cells[2][3],
 	};
-	float w = x * matrix.cells[0][3] + y * matrix.cells[1][3] + z * matrix.cells[2][3] + matrix.cells[3][3];
-
-	if (w != 0.0f)
-	{
-		result.x /= w;
-		result.y /= w;
-		result.z /= w;
-	}
+	float w = x * matrix.cells[3][0] + y * matrix.cells[3][1] + z * matrix.cells[3][2] + matrix.cells[3][3];
+	
+	// if (w != 0.0f)
+	// {
+	// 	result.x /= w;
+	// 	result.y /= w;
+	// 	result.z /= w;
+	// }
 	x = result.x;
 	y = result.y;
 	z = result.z;	

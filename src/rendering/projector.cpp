@@ -11,9 +11,9 @@ Engene::Math::Mat4 Projector::CreateTranslationMatrix(float x, float y, float z)
 {
     Engene::Math::Mat4 matrix = 
     { 
-        0.0f , 0.0f , 0.0f , x   ,
-        0.0f , 0.0f , 0.0f , y   , 
-        0.0f , 0.0f , 0.0f , z   , 
+        1.0f , 0.0f , 0.0f , x   ,
+        0.0f , 1.0f , 0.0f , y   , 
+        0.0f , 0.0f , 1.0f , z   , 
         0.0f , 0.0f , 0.0f , 1.0f 
     };
     return matrix;

@@ -13,10 +13,11 @@ namespace Engene
 class Renderer
 {
 private:
+  std::vector<Engene::Math::Vec3> points;
   Engene::Drawing::Mesh cube;
   Engene::Math::Mat4 projectionMatrix;
 
-  float fTheta;
+  float theta;
   std::chrono::system_clock::time_point renderTimeStamp = std::chrono::system_clock::now();
 
 public:
