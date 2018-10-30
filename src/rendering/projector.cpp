@@ -86,5 +86,34 @@ Engene::Math::Mat4 Projector::CreateProjectionMatrix(float d, float z)
     return matrix;
 }
 
+Engene::Math::Vec3 Projector::Project(Engene::Math::Vec3 vector) 
+{
+    // Convert to world coordinate system
+    vector *= Projector::CreateTranslationMatrix(0.0f, 0.0f, 2.0f);
+
+    // Convert to viewing coordinate system
+    Engene::Math::Mat4 translateViewPoint = Projector::CreateTranslationMatrix(-4.0f, -2.0f, 0.0f);
+    Engene::Math::Mat4 r = {
+        -sqrt(5.0f)/5    , (2*sqrt(5.0f))/5 , 0 , 0 ,
+        0                , 0                , 1 , 0 ,
+        (2*sqrt(5.0f))/5 , sqrt(5.0f)/5     , 0 , 0 ,
+        0                , 0                , 0 , 1
+    };
+    Engene::Math::Mat4 combinedMatrix = r * translateViewPoint;
+    // projectedVector *= translateViewPoint;
+    vector *= combinedMatrix;
+
+    // Convert to 2D coordinate system (perspective projection from 3D to 2D)
+    vector *= Projector::CreateProjectionMatrix(2.0f, vector.z);
+
+    // Scale so cube is visible in screen 400x400
+    vector *= Projector::CreateScalingMatrix(200.0f);
+
+    // Center to screen
+    vector *= Projector::CreateTranslationMatrix(200, 0, 0);
+
+    return vector;
+}
+
 } //  namespace Rendering
 } // namespace Engene

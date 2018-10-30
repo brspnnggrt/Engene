@@ -23,6 +23,7 @@ class DrawBoard
 		static const Color WHITE;
 		static const Color BLACK;
 	};
+	static void DrawCircle(Engene::Math::Vec3 point, int radius, Color color = Color::WHITE);
 	static void DrawLine(Engene::Math::Vec3 start, Engene::Math::Vec3 end, Color color = Color::WHITE);
 	static void DrawTriangle(Engene::Math::Triangle triangle, Color color = Color::WHITE);
 };

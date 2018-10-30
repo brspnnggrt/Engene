@@ -6,6 +6,8 @@
 #include "projector.h"
 #include <GLFW/glfw3.h>
 #include <math.h>
+#include <vector>
+#include <algorithm>
 
 namespace Engene
 {
@@ -18,30 +20,6 @@ Renderer::Renderer()
         { 0.0f , 0.0f , 0.0f } , { 0.0f , 0.0f , 1.0f } , { 0.0f , 1.0f , 0.0f } , { 0.0f , 1.0f , 1.0f },
         { 1.0f , 0.0f , 0.0f } , { 1.0f , 0.0f , 1.0f } , { 1.0f , 1.0f , 0.0f } , { 1.0f , 1.0f , 1.0f },
     };
-    // cube.triangles = {
-    //     // SOUTH
-    //     {0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f},
-    //     {0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f},
-
-    //     // EAST
-    //     {1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f},
-    //     {1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f},
-
-    //     // NORTH
-    //     {1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f},
-    //     {1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f},
-
-    //     // WEST
-    //     {0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f},
-    //     {0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f},
-
-    //     // TOP
-    //     {0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-    //     {0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f},
-
-    //     // BOTTOM
-    //     {1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f},
-    //     {1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f}};
 };
 
 int Renderer::Render(GLFWwindow *win, int count)
@@ -60,41 +38,38 @@ int Renderer::Render(GLFWwindow *win, int count)
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // float near = 0.1f;
-    // float far = 1000.0f;
-    // float fov = 90.0f;
-    // float aspectRatio = (float)HEIGHT / (float)WIDTH;
-    // float fovRad = 1.0f / tanf(fov * 0.5f / 180.0f * 3.1459f); // convert from degrees to radiance
-
-
     theta += 1.0f * count / 1000;
+
+    std::vector<Math::Vec3> projectedVectors;
 
     for (auto vector : points)
     {
-        Engene::Math::Vec3 projectedVector = vector;
-
-        // Convert to world coordinate system
-        projectedVector *= Projector::CreateTranslationMatrix(0.0f, 0.0f, 2.0f);
-
-        // Convert to viewing coordinate system
-        Engene::Math::Mat4 translateViewPoint = Projector::CreateTranslationMatrix(-4.0f, -2.0f, 0.0f);
-        Engene::Math::Mat4 r = {
-          -1/5 * sqrt(5) , 2/5 * sqrt(5) , 0 , 0               ,
-          0              , 0             , 1 , 0               ,
-          2/5 * sqrt(5)  , 1/5 * sqrt(5) , 0 , -10/5 * sqrt(5) ,
-          0              , 0             , 0 , 1
-        };
-        projectedVector *= translateViewPoint;
-        projectedVector *= r;
-
-        // Convert to 2D coordinate system (perspective projection from 3D to 2D)
-        projectedVector *= Projector::CreateProjectionMatrix(2.0f, -2 * sqrt(5));
-        projectedVector *= Projector::CreateProjectionMatrix(2.0f, -2 * sqrt(5));
-        projectedVector *= Projector::CreateProjectionMatrix(2.0f, -2 * sqrt(5));
+        // Project
+        Math::Vec3 projectedVector = Projector::Project(vector);
 
         // Draw
-        Engene::Math::Vec3 origin = {0.0f, 0.0f, 0.0f};
-        Engene::Drawing::DrawBoard::DrawLine(origin, projectedVector, Drawing::DrawBoard::Color::BLUE);
+        Drawing::DrawBoard::DrawCircle(projectedVector, 3, Drawing::DrawBoard::Color::WHITE);
+
+        // Save
+        projectedVectors.push_back(projectedVector);
+    }
+
+    std::vector<Math::Vec3> bottom;
+    std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), [](Math::Vec3 vector) { return vector.z == 0; });
+    std::sort(bottom.begin(), bottom.end(), [](Math::Vec3 a, Math::Vec3 b) { return a.x + (2 * a.y); });
+
+    for (std::size_t i = 0; i != bottom.size(); ++i) 
+    {
+        Math::Vec3 vector = bottom[i];
+        Math::Vec3 projectedVector = Projector::Project(vector);
+
+        Math::Vec3 vector2 = bottom[0];
+        if (i + 1 != bottom.size())
+            vector2 = bottom[i + 1];    
+
+        Math::Vec3 projectedVector2 = Projector::Project(vector2);
+
+        Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::BLUE);
     }
 
     return 1;

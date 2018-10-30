@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../math/mat4.h"
+#include "../math/vec3.h"
 
 namespace Engene
 {
@@ -15,6 +16,7 @@ class Projector
     static Engene::Math::Mat4 CreateRotationMatrix(Axis axis, float fTheta);
     static Engene::Math::Mat4 CreateScalingMatrix(float scale);
     static Engene::Math::Mat4 CreateProjectionMatrix(float d, float z);
+    static Engene::Math::Vec3 Project(Engene::Math::Vec3 vector);
 };
 
 } //  namespace Rendering
