@@ -8,6 +8,7 @@
 #include <math.h>
 #include <vector>
 #include <algorithm>
+#include <functional>
 
 namespace Engene
 {
@@ -17,8 +18,8 @@ namespace Rendering
 Renderer::Renderer()
 {
     points = {
-        { 0.0f , 0.0f , 0.0f } , { 0.0f , 0.0f , 1.0f } , { 0.0f , 1.0f , 0.0f } , { 0.0f , 1.0f , 1.0f },
-        { 1.0f , 0.0f , 0.0f } , { 1.0f , 0.0f , 1.0f } , { 1.0f , 1.0f , 0.0f } , { 1.0f , 1.0f , 1.0f },
+        { 0.0f , 0.0f , 0.0f } , { 1.0f , 0.0f , 0.0f } , { 1.0f , 1.0f , 0.0f } , { 0.0f , 1.0f , 0.0f } ,
+        { 0.0f , 0.0f , 1.0f } , { 1.0f , 0.0f , 1.0f } , { 1.0f , 1.0f , 1.0f } , { 0.0f , 1.0f , 1.0f } ,
     };
 };
 
@@ -48,29 +49,42 @@ int Renderer::Render(GLFWwindow *win, int count)
         Math::Vec3 projectedVector = Projector::Project(vector);
 
         // Draw
-        Drawing::DrawBoard::DrawCircle(projectedVector, 3, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawCircle(projectedVector, 5, Drawing::DrawBoard::Color::RED);
 
         // Save
         projectedVectors.push_back(projectedVector);
     }
 
-    std::vector<Math::Vec3> bottom;
-    std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), [](Math::Vec3 vector) { return vector.z == 0; });
-    std::sort(bottom.begin(), bottom.end(), [](Math::Vec3 a, Math::Vec3 b) { return a.x + (2 * a.y); });
+    std::vector<std::function<bool(Math::Vec3 vector)>> tests = {
+        [](Math::Vec3 vector) { return vector.z == 0; },
+        [](Math::Vec3 vector) { return vector.z == 1; },
+        [](Math::Vec3 vector) { return vector.x == 0; },
+        [](Math::Vec3 vector) { return vector.x == 1; },
+        [](Math::Vec3 vector) { return vector.y == 0; },
+        [](Math::Vec3 vector) { return vector.y == 1; }
+    };
 
-    for (std::size_t i = 0; i != bottom.size(); ++i) 
+    for (auto test : tests) 
     {
-        Math::Vec3 vector = bottom[i];
-        Math::Vec3 projectedVector = Projector::Project(vector);
+        std::vector<Math::Vec3> bottom;
+        std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
+        std::sort(bottom.begin(), bottom.end(), [](Math::Vec3 a, Math::Vec3 b) { return a.x + a.y; });
 
-        Math::Vec3 vector2 = bottom[0];
-        if (i + 1 != bottom.size())
-            vector2 = bottom[i + 1];    
+        for (std::size_t i = 0; i != bottom.size(); ++i) 
+        {
+            Math::Vec3 vector = bottom[i];
+            Math::Vec3 projectedVector = Projector::Project(vector);
 
-        Math::Vec3 projectedVector2 = Projector::Project(vector2);
+            Math::Vec3 vector2 = bottom[0];
+            if (i + 1 != bottom.size())
+                vector2 = bottom[i + 1];    
 
-        Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::BLUE);
+            Math::Vec3 projectedVector2 = Projector::Project(vector2);
+
+            Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
+        }
     }
+    
 
     return 1;
 }

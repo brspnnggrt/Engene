@@ -38,6 +38,9 @@
         "ratio": "cpp",
         "sstream": "cpp",
         "tuple": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "cmath": "cpp",
+        "deque": "cpp",
+        "numeric": "cpp"
     }
 }
