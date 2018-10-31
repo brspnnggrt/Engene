@@ -52,7 +52,7 @@ int Renderer::Render(GLFWwindow *win, float count)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     Math::Vec3 objectLocation = {0.0f, 0.0f, 0.0f};
-    Math::Vec3 viewingLocation = {12.0f, 12.0f, 0.0f};
+    Math::Vec3 viewingLocation = {count * 2, 12.0f, 0.0f};
 
     Projector projector = Projector(200, Math::Vec3 { WIDTH / 2, HEIGHT / 2, 0.0f });
 
