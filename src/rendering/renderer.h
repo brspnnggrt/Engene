@@ -24,7 +24,7 @@ public:
   static constexpr float WIDTH = 400; 
   static constexpr float HEIGHT = 400;
   Renderer();
-  int Render(GLFWwindow* win, int count);
+  int Render(GLFWwindow* win, float count);
 };
 
 } //  namespace Rendering

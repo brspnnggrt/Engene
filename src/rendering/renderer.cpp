@@ -18,12 +18,18 @@ namespace Rendering
 Renderer::Renderer()
 {
     points = {
-        { 0.0f , 0.0f , 0.0f } , { 0.0f , 0.0f , 1.0f } , { 0.0f , 1.0f , 0.0f } , { 0.0f , 1.0f , 1.0f } ,
-        { 1.0f , 0.0f , 0.0f } , { 1.0f , 0.0f , 1.0f } , { 1.0f , 1.0f , 0.0f } , { 1.0f , 1.0f , 1.0f } ,
+        {0.0f, 0.0f, 0.0f},
+        {0.0f, 0.0f, 1.0f},
+        {0.0f, 1.0f, 0.0f},
+        {0.0f, 1.0f, 1.0f},
+        {1.0f, 0.0f, 0.0f},
+        {1.0f, 0.0f, 1.0f},
+        {1.0f, 1.0f, 0.0f},
+        {1.0f, 1.0f, 1.0f},
     };
 };
 
-int Renderer::Render(GLFWwindow *win, int count)
+int Renderer::Render(GLFWwindow *win, float count)
 {
     std::chrono::system_clock::time_point nowTimeStamp = std::chrono::system_clock::now();
     std::chrono::duration<double> timepassed = renderTimeStamp - nowTimeStamp;
@@ -39,12 +45,10 @@ int Renderer::Render(GLFWwindow *win, int count)
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    theta += 1.0f * count / 1000;
-
     std::vector<Math::Vec3> projectedVectors;
 
     Math::Vec3 objectLocation = { 0.0f, 0.0f, 2.0f };
-    Math::Vec3 viewingLocation = { 4.0f, 2.0f, 0.0f };
+    Math::Vec3 viewingLocation = { count, 2.0f, 0.0f };
 
     for (auto vector : points)
     {
@@ -52,7 +56,7 @@ int Renderer::Render(GLFWwindow *win, int count)
         Math::Vec3 projectedVector = Projector::Project(vector, objectLocation, viewingLocation);
 
         // Draw
-        Drawing::DrawBoard::DrawCircle(projectedVector, 5, Drawing::DrawBoard::Color::RED);
+        Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::RED);
 
         // Save
         projectedVectors.push_back(projectedVector);
@@ -64,10 +68,9 @@ int Renderer::Render(GLFWwindow *win, int count)
         [](Math::Vec3 vector) { return vector.x == 0; },
         [](Math::Vec3 vector) { return vector.x == 1; },
         [](Math::Vec3 vector) { return vector.y == 0; },
-        [](Math::Vec3 vector) { return vector.y == 1; }
-    };
+        [](Math::Vec3 vector) { return vector.y == 1; }};
 
-    for (auto test : tests) 
+    for (auto test : tests)
     {
         std::vector<Math::Vec3> bottom;
         std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
@@ -82,7 +85,6 @@ int Renderer::Render(GLFWwindow *win, int count)
         Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::WHITE);
     }
-    
 
     return 1;
 }

@@ -32,7 +32,7 @@ int main(void)
 	// see https://www.opengl.org/sdk/docs/man2/xhtml/glOrtho.xml
 	glOrtho(0.0, Engene::Rendering::Renderer::WIDTH, 0.0, Engene::Rendering::Renderer::HEIGHT, 0.0, 1.0); // this creates a canvas you can do 2D drawing on
 
-    int count = 0;
+    float count = 0;
     Engene::Rendering::Renderer renderer;
 
     /* Loop until the user closes the window */
@@ -48,7 +48,7 @@ int main(void)
         /* Poll for and process events */
         glfwPollEvents();
 
-        count++;
+        count += 0.01f;
     }
 
     glfwTerminate();
