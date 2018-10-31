@@ -7,6 +7,10 @@ namespace Engene
 namespace Rendering
 {
 
+Projector::Projector(float scaling, Math::Vec3 translation, Math::Vec3 viewUpVector) : scaling(scaling), translation(translation), viewUpVector(viewUpVector)
+{
+}
+
 Math::Mat4 Projector::CreateTranslationMatrix(float x, float y, float z) 
 {
     Math::Mat4 matrix = 
@@ -86,7 +90,7 @@ Math::Mat4 Projector::CreateProjectionMatrix(float d, float z)
     return matrix;
 }
 
-Math::Vec3 Projector::Project(Math::Vec3 vector, Math::Vec3 objectLocation, Math::Vec3 viewingLocation, Math::Vec3 viewUpVector) 
+Math::Vec3 Projector::Project(Math::Vec3 vector, Math::Vec3 objectLocation, Math::Vec3 viewingLocation) 
 {
     // Convert to world coordinate system
     vector *= Projector::CreateTranslationMatrix(objectLocation.x, objectLocation.y, objectLocation.z); // Where do you want the object from which this vector is part of?
@@ -110,11 +114,9 @@ Math::Vec3 Projector::Project(Math::Vec3 vector, Math::Vec3 objectLocation, Math
     // Convert to 2D coordinate system (perspective projection from 3D to 2D)
     vector *= Projector::CreateProjectionMatrix(2.0f, vector.z);
 
-    // Scale so cube is visible in screen 400x400
-    vector *= Projector::CreateScalingMatrix(200.0f);
-
-    // Center to screen
-    vector *= Projector::CreateTranslationMatrix(200, 0, 0);
+    // Apply scaling & translation
+    vector *= Projector::CreateScalingMatrix(scaling);
+    vector *= Projector::CreateTranslationMatrix(translation.x, translation.y, translation.z); // Can be used to center to screen
 
     return vector;
 }

@@ -25,8 +25,14 @@ Renderer::Renderer()
         {1.0f, 0.0f, 0.0f},
         {1.0f, 0.0f, 1.0f},
         {1.0f, 1.0f, 0.0f},
-        {1.0f, 1.0f, 1.0f},
-    };
+        {1.0f, 1.0f, 1.0f}};
+
+    origin = {0.0f, 0.0f, 0.0f};
+
+    basis = {
+        {1.0f, 0.0f, 0.0f},
+        {0.0f, 0.1f, 0.0f},
+        {0.0f, 0.0f, 1.0f}};
 };
 
 int Renderer::Render(GLFWwindow *win, float count)
@@ -45,21 +51,17 @@ int Renderer::Render(GLFWwindow *win, float count)
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    std::vector<Math::Vec3> projectedVectors;
+    Math::Vec3 objectLocation = {2.0f, 1.0f, -1.0f};
+    Math::Vec3 viewingLocation = {4.0f, 2.0f, 0.0f};
 
-    Math::Vec3 objectLocation = { 0.0f, 0.0f, 2.0f };
-    Math::Vec3 viewingLocation = { count, 2.0f, 0.0f };
+    Projector projector = Projector(200, Math::Vec3 { WIDTH / 2, HEIGHT / 2, 0.0f });
 
     for (auto vector : points)
     {
         // Project
-        Math::Vec3 projectedVector = Projector::Project(vector, objectLocation, viewingLocation);
-
+        Math::Vec3 projectedVector = projector.Project(vector, objectLocation, viewingLocation);
         // Draw
-        Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::RED);
-
-        // Save
-        projectedVectors.push_back(projectedVector);
+        Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::WHITE);
     }
 
     std::vector<std::function<bool(Math::Vec3 vector)>> tests = {
@@ -74,17 +76,27 @@ int Renderer::Render(GLFWwindow *win, float count)
     {
         std::vector<Math::Vec3> bottom;
         std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
-        // std::sort(bottom.begin(), bottom.end(), [](Math::Vec3 a, Math::Vec3 b) { return a.x + a.y; });
 
-        Math::Vec3 projectedVector = Projector::Project(bottom[0], objectLocation, viewingLocation);
-        Math::Vec3 projectedVector2 = Projector::Project(bottom[1], objectLocation, viewingLocation);
-        Math::Vec3 projectedVector3 = Projector::Project(bottom[2], objectLocation, viewingLocation);
-        Math::Vec3 projectedVector4 = Projector::Project(bottom[3], objectLocation, viewingLocation);
+        Math::Vec3 projectedVector = projector.Project(bottom[0], objectLocation, viewingLocation);
+        Math::Vec3 projectedVector2 = projector.Project(bottom[1], objectLocation, viewingLocation);
+        Math::Vec3 projectedVector3 = projector.Project(bottom[2], objectLocation, viewingLocation);
+        Math::Vec3 projectedVector4 = projector.Project(bottom[3], objectLocation, viewingLocation);
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector3, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::WHITE);
     }
+
+    // Project
+    Math::Vec3 projectedOrigin = projector.Project(origin, origin, viewingLocation);
+    Math::Vec3 projectedBasis1 = projector.Project(basis[0], origin, viewingLocation);
+    Math::Vec3 projectedBasis2 = projector.Project(basis[1], origin, viewingLocation);
+    Math::Vec3 projectedBasis3 = projector.Project(basis[2], origin, viewingLocation);
+
+    // Draw
+    Drawing::DrawBoard::DrawLine(projectedOrigin, projectedBasis1, Drawing::DrawBoard::Color::RED);
+    Drawing::DrawBoard::DrawLine(projectedOrigin, projectedBasis2, Drawing::DrawBoard::Color::GREEN);
+    Drawing::DrawBoard::DrawLine(projectedOrigin, projectedBasis3, Drawing::DrawBoard::Color::BLUE);
 
     return 1;
 }
