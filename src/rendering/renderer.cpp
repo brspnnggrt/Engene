@@ -51,15 +51,18 @@ int Renderer::Render(GLFWwindow *win, float count)
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    Math::Vec3 objectLocation = {2.0f, 1.0f, -1.0f};
-    Math::Vec3 viewingLocation = {4.0f, 2.0f, 0.0f};
+    Math::Vec3 objectLocation = {0.0f, 0.0f, 0.0f};
+    Math::Vec3 viewingLocation = {12.0f, 12.0f, 0.0f};
 
     Projector projector = Projector(200, Math::Vec3 { WIDTH / 2, HEIGHT / 2, 0.0f });
+
+    Math::Mat4 rotation = Projector::CreateRotationMatrix(Projector::Axis::Z, count);
 
     for (auto vector : points)
     {
         // Project
         Math::Vec3 projectedVector = projector.Project(vector, objectLocation, viewingLocation);
+        projectedVector *= rotation;
         // Draw
         Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::WHITE);
     }
@@ -81,6 +84,10 @@ int Renderer::Render(GLFWwindow *win, float count)
         Math::Vec3 projectedVector2 = projector.Project(bottom[1], objectLocation, viewingLocation);
         Math::Vec3 projectedVector3 = projector.Project(bottom[2], objectLocation, viewingLocation);
         Math::Vec3 projectedVector4 = projector.Project(bottom[3], objectLocation, viewingLocation);
+        projectedVector *= rotation;
+        projectedVector2 *= rotation;
+        projectedVector3 *= rotation;
+        projectedVector4 *= rotation;
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector3, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
