@@ -43,10 +43,13 @@ int Renderer::Render(GLFWwindow *win, int count)
 
     std::vector<Math::Vec3> projectedVectors;
 
+    Math::Vec3 objectLocation = { 0.0f, 0.0f, 2.0f };
+    Math::Vec3 viewingLocation = { 4.0f, 2.0f, 0.0f };
+
     for (auto vector : points)
     {
         // Project
-        Math::Vec3 projectedVector = Projector::Project(vector);
+        Math::Vec3 projectedVector = Projector::Project(vector, objectLocation, viewingLocation);
 
         // Draw
         Drawing::DrawBoard::DrawCircle(projectedVector, 5, Drawing::DrawBoard::Color::RED);
@@ -70,10 +73,10 @@ int Renderer::Render(GLFWwindow *win, int count)
         std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
         // std::sort(bottom.begin(), bottom.end(), [](Math::Vec3 a, Math::Vec3 b) { return a.x + a.y; });
 
-        Math::Vec3 projectedVector = Projector::Project(bottom[0]);
-        Math::Vec3 projectedVector2 = Projector::Project(bottom[1]);
-        Math::Vec3 projectedVector3 = Projector::Project(bottom[2]);
-        Math::Vec3 projectedVector4 = Projector::Project(bottom[3]);
+        Math::Vec3 projectedVector = Projector::Project(bottom[0], objectLocation, viewingLocation);
+        Math::Vec3 projectedVector2 = Projector::Project(bottom[1], objectLocation, viewingLocation);
+        Math::Vec3 projectedVector3 = Projector::Project(bottom[2], objectLocation, viewingLocation);
+        Math::Vec3 projectedVector4 = Projector::Project(bottom[3], objectLocation, viewingLocation);
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector3, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);

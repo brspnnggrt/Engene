@@ -16,7 +16,7 @@ class Projector
     static Engene::Math::Mat4 CreateRotationMatrix(Axis axis, float fTheta);
     static Engene::Math::Mat4 CreateScalingMatrix(float scale);
     static Engene::Math::Mat4 CreateProjectionMatrix(float d, float z);
-    static Engene::Math::Vec3 Project(Engene::Math::Vec3 vector);
+    static Engene::Math::Vec3 Project(Math::Vec3 vector, Math::Vec3 objectLocation, Math::Vec3 viewingLocation, Math::Vec3 viewUpVector = Math::Vec3 { 0, 0, 1 });
 };
 
 } //  namespace Rendering
