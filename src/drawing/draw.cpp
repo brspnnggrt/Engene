@@ -39,7 +39,7 @@ void DrawBoard::DrawCircle(Engene::Math::Vec3 point, int radius, Color color)
 void DrawBoard::DrawLine(Engene::Math::Vec3 start, Engene::Math::Vec3 end, Color color)
 {
 	glPointSize(10);
-	glLineWidth(2.5);
+	glLineWidth(1.0f);
 	glColor3f(color.R, color.G, color.B);
 	glBegin(GL_LINES);
 	glVertex3f(start.x, start.y, 0.0);

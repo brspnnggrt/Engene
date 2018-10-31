@@ -18,8 +18,8 @@ namespace Rendering
 Renderer::Renderer()
 {
     points = {
-        { 0.0f , 0.0f , 0.0f } , { 1.0f , 0.0f , 0.0f } , { 1.0f , 1.0f , 0.0f } , { 0.0f , 1.0f , 0.0f } ,
-        { 0.0f , 0.0f , 1.0f } , { 1.0f , 0.0f , 1.0f } , { 1.0f , 1.0f , 1.0f } , { 0.0f , 1.0f , 1.0f } ,
+        { 0.0f , 0.0f , 0.0f } , { 0.0f , 0.0f , 1.0f } , { 0.0f , 1.0f , 0.0f } , { 0.0f , 1.0f , 1.0f } ,
+        { 1.0f , 0.0f , 0.0f } , { 1.0f , 0.0f , 1.0f } , { 1.0f , 1.0f , 0.0f } , { 1.0f , 1.0f , 1.0f } ,
     };
 };
 
@@ -68,21 +68,16 @@ int Renderer::Render(GLFWwindow *win, int count)
     {
         std::vector<Math::Vec3> bottom;
         std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
-        std::sort(bottom.begin(), bottom.end(), [](Math::Vec3 a, Math::Vec3 b) { return a.x + a.y; });
+        // std::sort(bottom.begin(), bottom.end(), [](Math::Vec3 a, Math::Vec3 b) { return a.x + a.y; });
 
-        for (std::size_t i = 0; i != bottom.size(); ++i) 
-        {
-            Math::Vec3 vector = bottom[i];
-            Math::Vec3 projectedVector = Projector::Project(vector);
-
-            Math::Vec3 vector2 = bottom[0];
-            if (i + 1 != bottom.size())
-                vector2 = bottom[i + 1];    
-
-            Math::Vec3 projectedVector2 = Projector::Project(vector2);
-
-            Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
-        }
+        Math::Vec3 projectedVector = Projector::Project(bottom[0]);
+        Math::Vec3 projectedVector2 = Projector::Project(bottom[1]);
+        Math::Vec3 projectedVector3 = Projector::Project(bottom[2]);
+        Math::Vec3 projectedVector4 = Projector::Project(bottom[3]);
+        Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector, projectedVector3, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::WHITE);
     }
     
 

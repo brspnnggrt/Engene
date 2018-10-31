@@ -38,5 +38,12 @@ Mat4 operator*(Mat4 left, const Mat4 &right)
     return result;
 }
 
+Mat4 &Mat4::operator*=(const Mat4 &matrix) {
+    Mat4 result = *this * matrix;
+    *this = result;
+	return *this;
+}
+
+
 } // namespace Math
 } // namespace Engene
