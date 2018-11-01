@@ -17,7 +17,7 @@ namespace Rendering
 
 Renderer::Renderer()
 {
-    points = {
+    cubeTall = {
         {0.0f, 0.0f, 0.0f},
         {0.0f, 0.0f, 1.0f},
         {0.0f, 1.0f, 0.0f},
@@ -26,6 +26,16 @@ Renderer::Renderer()
         {1.0f, 0.0f, 1.0f},
         {1.0f, 1.0f, 0.0f},
         {1.0f, 1.0f, 1.0f}};
+
+    cubeLittle = {
+        {0.0f, 0.0f, 0.0f},
+        {0.0f, 0.0f, 0.5f},
+        {0.0f, 0.5f, 0.0f},
+        {0.0f, 0.5f, 0.5f},
+        {0.5f, 0.0f, 0.0f},
+        {0.5f, 0.0f, 0.5f},
+        {0.5f, 0.5f, 0.0f},
+        {0.5f, 0.5f, 0.5f}};
 
     origin = {0.0f, 0.0f, 0.0f};
 
@@ -58,7 +68,7 @@ int Renderer::Render(GLFWwindow *win, float count)
 
     Math::Mat4 rotation = Projector::CreateRotationMatrix(Projector::Axis::Z, count);
 
-    for (auto vector : points)
+    for (auto vector : cubeTall)
     {
         vector *= rotation;
         // Project
@@ -67,6 +77,10 @@ int Renderer::Render(GLFWwindow *win, float count)
         // Draw
         Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::WHITE);
     }
+
+    std::vector<Math::Vec3> points;
+    std::copy(cubeTall.begin(), cubeTall.end(), std::back_inserter(points));
+    points.insert( points.end(), cubeLittle.begin(), cubeLittle.end() );
 
     std::vector<std::function<bool(Math::Vec3 vector)>> tests = {
         [](Math::Vec3 vector) { return vector.z == 0; },
@@ -81,20 +95,31 @@ int Renderer::Render(GLFWwindow *win, float count)
         std::vector<Math::Vec3> bottom;
         std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
 
-        Math::Vec3 projectedVector = bottom[0] * rotation;
+        Math::Vec3 projectedVector1 = bottom[0] * rotation;
         Math::Vec3 projectedVector2 = bottom[1] * rotation;
         Math::Vec3 projectedVector3 = bottom[2] * rotation;
         Math::Vec3 projectedVector4 = bottom[3] * rotation;
+        Math::Vec3 projectedVector5 = bottom[4] * rotation;
+        Math::Vec3 projectedVector6 = bottom[5] * rotation;
+        Math::Vec3 projectedVector7 = bottom[6] * rotation;
+        Math::Vec3 projectedVector8 = bottom[7] * rotation;
 
-        projectedVector = projector.Project(projectedVector, objectLocation, viewingLocation);
+        projectedVector1 = projector.Project(projectedVector1, objectLocation, viewingLocation);
         projectedVector2 = projector.Project(projectedVector2, objectLocation, viewingLocation);
         projectedVector3 = projector.Project(projectedVector3, objectLocation, viewingLocation);
         projectedVector4 = projector.Project(projectedVector4, objectLocation, viewingLocation);
+        projectedVector5 = projector.Project(projectedVector5, objectLocation, viewingLocation);
+        projectedVector6 = projector.Project(projectedVector6, objectLocation, viewingLocation);
+        projectedVector7 = projector.Project(projectedVector7, objectLocation, viewingLocation);
+        projectedVector8 = projector.Project(projectedVector8, objectLocation, viewingLocation);
         
-        Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
-        Drawing::DrawBoard::DrawLine(projectedVector, projectedVector3, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector2, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector3, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector6, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector7, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector8, Drawing::DrawBoard::Color::WHITE);
     }
 
     // Project

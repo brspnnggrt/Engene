@@ -13,7 +13,8 @@ namespace Engene
 class Renderer
 {
 private:
-  std::vector<Math::Vec3> points;
+std::vector<Math::Vec3> cubeLittle;
+  std::vector<Math::Vec3> cubeTall;
   Math::Vec3 origin;
   std::vector<Math::Vec3> basis;
   Engene::Drawing::Mesh cube;
