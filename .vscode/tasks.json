@@ -7,16 +7,39 @@
             "command": "g++",
             "args": [
                 "-std=c++17",
-                "-g",   "${workspaceFolder}\\src\\*.cpp", 
-                        "${workspaceFolder}\\src\\math\\*.cpp",
-                        "${workspaceFolder}\\src\\drawing\\*.cpp",
-                        "${workspaceFolder}\\src\\rendering\\*.cpp",
+                "-g",   "${workspaceFolder}\\src\\main.cpp", 
+                        "${workspaceFolder}\\src\\math\\mat4.cpp",
+                        "${workspaceFolder}\\src\\math\\vec2.cpp",
+                        "${workspaceFolder}\\src\\math\\vec3.cpp",
+                        "${workspaceFolder}\\src\\drawing\\draw.cpp",
+                        "${workspaceFolder}\\src\\rendering\\projector.cpp",
+                        "${workspaceFolder}\\src\\rendering\\renderer.cpp",
                 "-o", "engene.exe",
                 "-I", "${workspaceFolder}\\libraries\\glfw-3.2.1.bin.WIN64\\include",
                 "-L", "${workspaceFolder}\\libraries\\glfw-3.2.1.bin.WIN64\\lib-mingw-w64",
                 "-lglfw3",
                 "-lopengl32",
                 "-mwindows"
+            ]
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "emcc",
+            "args": [
+                "-std=c++17",
+                "-g",   "${workspaceFolder}\\src\\main.cpp", 
+                        "${workspaceFolder}\\src\\math\\mat4.cpp",
+                        "${workspaceFolder}\\src\\math\\vec2.cpp",
+                        "${workspaceFolder}\\src\\math\\vec3.cpp",
+                        "${workspaceFolder}\\src\\drawing\\draw.cpp",
+                        "${workspaceFolder}\\src\\rendering\\projector.cpp",
+                        "${workspaceFolder}\\src\\rendering\\renderer.cpp",
+                "-o", "index.html",
+                "-s", "WASM=1",
+                "-s", "USE_GLFW=3",
+                "-s", "LEGACY_GL_EMULATION=1",
+                "-lGL"
             ],
             "group": {
                 "kind": "build",

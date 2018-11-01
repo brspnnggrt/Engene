@@ -2,7 +2,7 @@
 
 #include <chrono>
 #include "../drawing/mesh.h"
-#include "../math/Mat4.h"
+#include "../math/mat4.h"
 #include <GLFW/glfw3.h>
 
 namespace Engene

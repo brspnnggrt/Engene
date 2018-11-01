@@ -1,5 +1,5 @@
 #include "draw.h"
-#include "../math/Vec2.h"
+#include "../math/vec2.h"
 #include <GLFW/glfw3.h>
 
 #define _USE_MATH_DEFINES
@@ -38,7 +38,7 @@ void DrawBoard::DrawCircle(Engene::Math::Vec3 point, int radius, Color color)
 
 void DrawBoard::DrawLine(Engene::Math::Vec3 start, Engene::Math::Vec3 end, Color color)
 {
-	glPointSize(10);
+	// glPointSize(10);
 	glLineWidth(1.0f);
 	glColor3f(color.R, color.G, color.B);
 	glBegin(GL_LINES);

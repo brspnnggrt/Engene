@@ -2,7 +2,7 @@
 #include "../drawing/mesh.h"
 #include "../drawing/draw.h"
 #include "../math/triangle.h"
-#include "../math/Vec3.h"
+#include "../math/vec3.h"
 #include "projector.h"
 #include <GLFW/glfw3.h>
 #include <math.h>

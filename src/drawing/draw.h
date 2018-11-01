@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../math/triangle.h"
-#include "../math/Vec2.h"
+#include "../math/vec2.h"
 
 namespace Engene
 {
