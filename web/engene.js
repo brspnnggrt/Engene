@@ -1510,9 +1510,9 @@ function integrateWasmJS() {
 
   var method = 'native-wasm';
 
-  var wasmTextFile = 'index.wast';
-  var wasmBinaryFile = 'index.wasm';
-  var asmjsCodeFile = 'index.temp.asm.js';
+  var wasmTextFile = 'engene.wast';
+  var wasmBinaryFile = 'engene.wasm';
+  var asmjsCodeFile = 'engene.temp.asm.js';
 
   if (!isDataURI(wasmTextFile)) {
     wasmTextFile = locateFile(wasmTextFile);

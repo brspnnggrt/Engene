@@ -35,7 +35,7 @@
                         "${workspaceFolder}\\src\\drawing\\draw.cpp",
                         "${workspaceFolder}\\src\\rendering\\projector.cpp",
                         "${workspaceFolder}\\src\\rendering\\renderer.cpp",
-                "-o", "web\\index.html",
+                "-o", "web\\engene.html",
                 "-s", "WASM=1",
                 "-s", "USE_GLFW=3",
                 "-s", "LEGACY_GL_EMULATION=1",
