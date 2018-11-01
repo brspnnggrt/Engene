@@ -41,6 +41,8 @@
         "utility": "cpp",
         "cmath": "cpp",
         "deque": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "thread": "cpp",
+        "memory": "cpp"
     }
 }

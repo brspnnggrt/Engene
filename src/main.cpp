@@ -3,6 +3,8 @@
 #include "math/vec2.h"
 #include "drawing/draw.h"
 #include "rendering/renderer.h"
+#include <thread>
+#include <chrono>
 
 int main(void)
 {
@@ -38,19 +40,20 @@ int main(void)
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        
         /* Render here */
-		
+        count += 0.05f;
         int a = renderer.Render(window, count);
-
+        
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
         /* Poll for and process events */
         glfwPollEvents();
-
-        count += 0.05f;
-    }
+    };
 
     glfwTerminate();
+
     return 0;
 }
