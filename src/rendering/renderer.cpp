@@ -56,10 +56,11 @@ int Renderer::Render(GLFWwindow *win, float count)
 
     Projector projector = Projector(200, Math::Vec3 { WIDTH / 2, HEIGHT / 2, 0.0f });
 
-    // Math::Mat4 rotation = Projector::CreateRotationMatrix(Projector::Axis::Z, count);
+    Math::Mat4 rotation = Projector::CreateRotationMatrix(Projector::Axis::Z, count);
 
     for (auto vector : points)
     {
+        vector *= rotation;
         // Project
         Math::Vec3 projectedVector = projector.Project(vector, objectLocation, viewingLocation);
         // projectedVector *= rotation;
@@ -80,14 +81,16 @@ int Renderer::Render(GLFWwindow *win, float count)
         std::vector<Math::Vec3> bottom;
         std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
 
-        Math::Vec3 projectedVector = projector.Project(bottom[0], objectLocation, viewingLocation);
-        Math::Vec3 projectedVector2 = projector.Project(bottom[1], objectLocation, viewingLocation);
-        Math::Vec3 projectedVector3 = projector.Project(bottom[2], objectLocation, viewingLocation);
-        Math::Vec3 projectedVector4 = projector.Project(bottom[3], objectLocation, viewingLocation);
-        // projectedVector *= rotation;
-        // projectedVector2 *= rotation;
-        // projectedVector3 *= rotation;
-        // projectedVector4 *= rotation;
+        Math::Vec3 projectedVector = bottom[0] * rotation;
+        Math::Vec3 projectedVector2 = bottom[1] * rotation;
+        Math::Vec3 projectedVector3 = bottom[2] * rotation;
+        Math::Vec3 projectedVector4 = bottom[3] * rotation;
+
+        projectedVector = projector.Project(projectedVector, objectLocation, viewingLocation);
+        projectedVector2 = projector.Project(projectedVector2, objectLocation, viewingLocation);
+        projectedVector3 = projector.Project(projectedVector3, objectLocation, viewingLocation);
+        projectedVector4 = projector.Project(projectedVector4, objectLocation, viewingLocation);
+        
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector, projectedVector3, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
