@@ -43,6 +43,12 @@
         "deque": "cpp",
         "numeric": "cpp",
         "thread": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp",
+        "cstddef": "cpp",
+        "__bit_reference": "cpp",
+        "algorithm": "cpp",
+        "bitset": "cpp"
     }
 }

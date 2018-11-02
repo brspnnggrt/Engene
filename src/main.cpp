@@ -5,15 +5,18 @@
 #include "rendering/renderer.h"
 #include <thread>
 #include <chrono>
+
+#ifndef NATIVE_COMPILER
+#ifndef __INTELLISENSE__
 #include <emscripten.h>
+#endif
+#endif
 
 GLFWwindow* window;
-float count = 0;
-Engene::Rendering::Renderer renderer;
+float count = 0.0f;
+Engene::Rendering::Renderer renderer = Engene::Rendering::Renderer();
 
-void render()
-{
-       
+void StartRenderingEngene() {
     /* Render here */
     count += 0.05f;
     int a = renderer.Render(window, count);
@@ -23,6 +26,16 @@ void render()
 
     /* Poll for and process events */
     glfwPollEvents();
+}
+
+void EmscriptenRender()
+{
+
+    #ifndef NATIVE_COMPILER
+    #ifndef __INTELLISENSE__
+    emscripten_set_main_loop(StartRenderingEngene, 0, 1);
+    #endif
+    #endif
 }
 
 int main(void)
@@ -44,7 +57,10 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
-	// glfwSwapInterval(0);
+
+    #ifdef NATIVE_COMPILER
+	    glfwSwapInterval(1);
+    #endif
 
 	// Set up viewport
 	glViewport(0, 0, Engene::Rendering::Renderer::WIDTH, Engene::Rendering::Renderer::HEIGHT);
@@ -54,7 +70,14 @@ int main(void)
 	// see https://www.opengl.org/sdk/docs/man2/xhtml/glOrtho.xml
 	glOrtho(0.0, Engene::Rendering::Renderer::WIDTH, 0.0, Engene::Rendering::Renderer::HEIGHT, 0.0, 1.0); // this creates a canvas you can do 2D drawing on
 
-    emscripten_set_main_loop(render, 0, 1);
+    #ifndef NATIVE_COMPILER
+        EmscriptenRender();
+    #else
+        while (!glfwWindowShouldClose(window)) 
+        {
+            StartRenderingEngene();
+        }
+    #endif
 
     glfwTerminate();
 

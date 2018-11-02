@@ -99,27 +99,27 @@ int Renderer::Render(GLFWwindow *win, float count)
         Math::Vec3 projectedVector2 = bottom[1] * rotation;
         Math::Vec3 projectedVector3 = bottom[2] * rotation;
         Math::Vec3 projectedVector4 = bottom[3] * rotation;
-        Math::Vec3 projectedVector5 = bottom[4] * rotation;
-        Math::Vec3 projectedVector6 = bottom[5] * rotation;
-        Math::Vec3 projectedVector7 = bottom[6] * rotation;
-        Math::Vec3 projectedVector8 = bottom[7] * rotation;
+        // Math::Vec3 projectedVector5 = bottom[4] * rotation;
+        // Math::Vec3 projectedVector6 = bottom[5] * rotation;
+        // Math::Vec3 projectedVector7 = bottom[6] * rotation;
+        // Math::Vec3 projectedVector8 = bottom[7] * rotation;
 
         projectedVector1 = projector.Project(projectedVector1, objectLocation, viewingLocation);
         projectedVector2 = projector.Project(projectedVector2, objectLocation, viewingLocation);
         projectedVector3 = projector.Project(projectedVector3, objectLocation, viewingLocation);
         projectedVector4 = projector.Project(projectedVector4, objectLocation, viewingLocation);
-        projectedVector5 = projector.Project(projectedVector5, objectLocation, viewingLocation);
-        projectedVector6 = projector.Project(projectedVector6, objectLocation, viewingLocation);
-        projectedVector7 = projector.Project(projectedVector7, objectLocation, viewingLocation);
-        projectedVector8 = projector.Project(projectedVector8, objectLocation, viewingLocation);
+        // projectedVector5 = projector.Project(projectedVector5, objectLocation, viewingLocation);
+        // projectedVector6 = projector.Project(projectedVector6, objectLocation, viewingLocation);
+        // projectedVector7 = projector.Project(projectedVector7, objectLocation, viewingLocation);
+        // projectedVector8 = projector.Project(projectedVector8, objectLocation, viewingLocation);
         
         Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector2, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector3, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
         Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::WHITE);
-        Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector6, Drawing::DrawBoard::Color::WHITE);
-        Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector7, Drawing::DrawBoard::Color::WHITE);
-        Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector8, Drawing::DrawBoard::Color::WHITE);
+        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector6, Drawing::DrawBoard::Color::WHITE);
+        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector7, Drawing::DrawBoard::Color::WHITE);
+        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector8, Drawing::DrawBoard::Color::WHITE);
     }
 
     // Project
