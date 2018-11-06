@@ -21,7 +21,7 @@
             ]
         },
         {
-            "label": "build",
+            "label": "build for web",
             "type": "shell",
             "command": "emcc",
             "args": [
