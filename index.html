@@ -12,7 +12,7 @@
         padding: none;
       }
 
-      .emscripten { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
+      .emscripten { padding-right: 0; display: block; }
       div.emscripten { text-align: center; }      
       div.emscripten_border { border: 1px solid black; }
       /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
@@ -116,10 +116,10 @@
     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
   </div>
 
-  <div id='controls'>
+  <div id='controls' style="display: none;">
       <span style="visibility: hidden;"><input type="checkbox" id="resize">Resize canvas</span>
       <span style="visibility: hidden;"><input type="checkbox" id="pointerLock" checked>Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;</span>
-      <span class="emscripten"><input type="button" value="Fullscreen" onclick="Module.requestFullscreen(document.getElementById('pointerLock').checked, 
+      <span style="visibility: hidden;" class="emscripten"><input type="button" value="Fullscreen" onclick="Module.requestFullscreen(document.getElementById('pointerLock').checked, 
                                                                               document.getElementById('resize').checked)">
       </span>
   </div>
