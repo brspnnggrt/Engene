@@ -15310,7 +15310,7 @@
   (local $$634 i32)
   (local $$635 i32)
   (local $$636 f32)
-  (local $$637 i32)
+  (local $$637 f32)
   (local $$638 i32)
   (local $$639 i32)
   (local $$64 i32)
@@ -15678,6 +15678,7 @@
   (local $$966 i32)
   (local $$967 i32)
   (local $$968 i32)
+  (local $$969 i32)
   (local $$97 i32)
   (local $$98 i32)
   (local $$99 i32)
@@ -18530,65 +18531,71 @@
   (set_local $$636
    (get_local $$389)
   )
+  (set_local $$637
+   (f32.div
+    (get_local $$636)
+    (f32.const 4)
+   )
+  )
   (call $__ZN6Engene9Rendering9Projector20CreateRotationMatrixENS1_4AxisEf
    (get_local $$404)
    (i32.const 2)
-   (get_local $$636)
+   (get_local $$637)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:71:0
-  (set_local $$637
+  (set_local $$638
    (i32.add
     (get_local $$506)
     (i32.const 12)
    )
   )
   (set_local $$405
-   (get_local $$637)
-  )
-  (set_local $$638
-   (get_local $$405)
-  )
-  (set_local $$255
    (get_local $$638)
   )
   (set_local $$639
+   (get_local $$405)
+  )
+  (set_local $$255
+   (get_local $$639)
+  )
+  (set_local $$640
    (get_local $$255)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
-  (set_local $$640
+  (set_local $$641
    (i32.load
-    (get_local $$639)
+    (get_local $$640)
    )
   )
   (set_local $$252
-   (get_local $$639)
-  )
-  (set_local $$253
    (get_local $$640)
   )
+  (set_local $$253
+   (get_local $$641)
+  )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$641
+  (set_local $$642
    (get_local $$253)
   )
   (set_local $$249
    (get_local $$251)
   )
   (set_local $$250
-   (get_local $$641)
+   (get_local $$642)
   )
-  (set_local $$642
+  (set_local $$643
    (get_local $$249)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$643
+  (set_local $$644
    (get_local $$250)
   )
   (i32.store
-   (get_local $$642)
    (get_local $$643)
+   (get_local $$644)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$644
+  (set_local $$645
    (i32.load
     (get_local $$251)
    )
@@ -18596,9 +18603,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
   (i32.store
    (get_local $$254)
-   (get_local $$644)
+   (get_local $$645)
   )
-  (set_local $$645
+  (set_local $$646
    (i32.load
     (get_local $$254)
    )
@@ -18606,58 +18613,58 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:71:0
   (i32.store
    (get_local $$406)
-   (get_local $$645)
-  )
-  (set_local $$646
-   (get_local $$405)
-  )
-  (set_local $$248
    (get_local $$646)
   )
   (set_local $$647
+   (get_local $$405)
+  )
+  (set_local $$248
+   (get_local $$647)
+  )
+  (set_local $$648
    (get_local $$248)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
-  (set_local $$648
+  (set_local $$649
    (i32.add
-    (get_local $$647)
+    (get_local $$648)
     (i32.const 4)
    )
   )
-  (set_local $$649
+  (set_local $$650
    (i32.load
-    (get_local $$648)
+    (get_local $$649)
    )
   )
   (set_local $$245
-   (get_local $$647)
+   (get_local $$648)
   )
   (set_local $$246
-   (get_local $$649)
+   (get_local $$650)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$650
+  (set_local $$651
    (get_local $$246)
   )
   (set_local $$242
    (get_local $$244)
   )
   (set_local $$243
-   (get_local $$650)
+   (get_local $$651)
   )
-  (set_local $$651
+  (set_local $$652
    (get_local $$242)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$652
+  (set_local $$653
    (get_local $$243)
   )
   (i32.store
-   (get_local $$651)
    (get_local $$652)
+   (get_local $$653)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$653
+  (set_local $$654
    (i32.load
     (get_local $$244)
    )
@@ -18665,9 +18672,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
   (i32.store
    (get_local $$247)
-   (get_local $$653)
+   (get_local $$654)
   )
-  (set_local $$654
+  (set_local $$655
    (i32.load
     (get_local $$247)
    )
@@ -18675,7 +18682,7 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:71:0
   (i32.store
    (get_local $$407)
-   (get_local $$654)
+   (get_local $$655)
   )
   (loop $while-in
    (block $while-out
@@ -18686,86 +18693,86 @@
      (get_local $$407)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
-    (set_local $$655
+    (set_local $$656
      (get_local $$240)
     )
-    (set_local $$656
+    (set_local $$657
      (get_local $$241)
     )
     (set_local $$238
-     (get_local $$655)
-    )
-    (set_local $$239
      (get_local $$656)
     )
+    (set_local $$239
+     (get_local $$657)
+    )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
-    (set_local $$657
+    (set_local $$658
      (get_local $$238)
     )
     (set_local $$237
-     (get_local $$657)
+     (get_local $$658)
     )
-    (set_local $$658
+    (set_local $$659
      (get_local $$237)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-    (set_local $$659
+    (set_local $$660
      (i32.load
-      (get_local $$658)
+      (get_local $$659)
      )
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
-    (set_local $$660
+    (set_local $$661
      (get_local $$239)
     )
     (set_local $$236
-     (get_local $$660)
+     (get_local $$661)
     )
-    (set_local $$661
+    (set_local $$662
      (get_local $$236)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-    (set_local $$662
-     (i32.load
-      (get_local $$661)
-     )
-    )
-    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
     (set_local $$663
-     (i32.eq
-      (get_local $$659)
+     (i32.load
       (get_local $$662)
      )
     )
-    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
+    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
     (set_local $$664
-     (i32.xor
+     (i32.eq
+      (get_local $$660)
       (get_local $$663)
+     )
+    )
+    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
+    (set_local $$665
+     (i32.xor
+      (get_local $$664)
       (i32.const 1)
      )
     )
     (if
      (i32.eqz
-      (get_local $$664)
+      (get_local $$665)
      )
      (br $while-out)
     )
     (set_local $$234
      (get_local $$406)
     )
-    (set_local $$665
+    (set_local $$666
      (get_local $$234)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1355:0
-    (set_local $$666
+    (set_local $$667
      (i32.load
-      (get_local $$665)
+      (get_local $$666)
      )
     )
     (i64.store align=4
      (get_local $$408)
      (i64.load align=4
-      (get_local $$666)
+      (get_local $$667)
      )
     )
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:71:0
@@ -18776,7 +18783,7 @@
      )
      (i32.load
       (i32.add
-       (get_local $$666)
+       (get_local $$667)
        (i32.const 8)
       )
      )
@@ -18985,24 +18992,24 @@
     (set_local $$233
      (get_local $$406)
     )
-    (set_local $$667
+    (set_local $$668
      (get_local $$233)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1371:0
-    (set_local $$668
+    (set_local $$669
      (i32.load
-      (get_local $$667)
+      (get_local $$668)
      )
     )
-    (set_local $$669
+    (set_local $$670
      (i32.add
-      (get_local $$668)
+      (get_local $$669)
       (i32.const 12)
      )
     )
     (i32.store
-     (get_local $$667)
-     (get_local $$669)
+     (get_local $$668)
+     (get_local $$670)
     )
     (br $while-in)
    )
@@ -19010,38 +19017,38 @@
   (set_local $$224
    (get_local $$415)
   )
-  (set_local $$670
+  (set_local $$671
    (get_local $$224)
   )
   (set_local $$222
-   (get_local $$670)
+   (get_local $$671)
   )
-  (set_local $$671
+  (set_local $$672
    (get_local $$222)
   )
   (set_local $$221
-   (get_local $$671)
+   (get_local $$672)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:421:0
-  (i32.store
-   (get_local $$671)
-   (i32.const 0)
-  )
-  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:422:0
-  (set_local $$672
-   (i32.add
-    (get_local $$671)
-    (i32.const 4)
-   )
-  )
   (i32.store
    (get_local $$672)
    (i32.const 0)
   )
-  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:423:0
+  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:422:0
   (set_local $$673
    (i32.add
-    (get_local $$671)
+    (get_local $$672)
+    (i32.const 4)
+   )
+  )
+  (i32.store
+   (get_local $$673)
+   (i32.const 0)
+  )
+  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:423:0
+  (set_local $$674
+   (i32.add
+    (get_local $$672)
     (i32.const 8)
    )
   )
@@ -19050,102 +19057,102 @@
    (i32.const 0)
   )
   (set_local $$219
-   (get_local $$673)
+   (get_local $$674)
   )
   (set_local $$220
    (get_local $$223)
   )
-  (set_local $$674
+  (set_local $$675
    (get_local $$219)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:2187:0
-  (set_local $$675
+  (set_local $$676
    (get_local $$220)
   )
   (set_local $$218
-   (get_local $$675)
+   (get_local $$676)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-  (set_local $$676
+  (set_local $$677
    (get_local $$218)
   )
   (set_local $$214
-   (get_local $$674)
+   (get_local $$675)
   )
   (set_local $$215
-   (get_local $$676)
+   (get_local $$677)
   )
-  (set_local $$677
+  (set_local $$678
    (get_local $$214)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:2097:0
-  (set_local $$678
+  (set_local $$679
    (get_local $$215)
   )
   (set_local $$213
-   (get_local $$678)
+   (get_local $$679)
   )
   (i32.store
-   (get_local $$677)
+   (get_local $$678)
    (i32.const 0)
   )
   (set_local $$217
-   (get_local $$674)
+   (get_local $$675)
   )
-  (set_local $$679
+  (set_local $$680
    (get_local $$217)
   )
   (set_local $$216
-   (get_local $$679)
+   (get_local $$680)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:82:0
-  (set_local $$680
+  (set_local $$681
    (i32.add
     (get_local $$506)
     (i32.const 12)
    )
   )
   (set_local $$166
-   (get_local $$680)
+   (get_local $$681)
   )
-  (set_local $$681
+  (set_local $$682
    (get_local $$166)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
-  (set_local $$682
+  (set_local $$683
    (i32.load
-    (get_local $$681)
+    (get_local $$682)
    )
   )
   (set_local $$163
-   (get_local $$681)
-  )
-  (set_local $$164
    (get_local $$682)
   )
+  (set_local $$164
+   (get_local $$683)
+  )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$683
+  (set_local $$684
    (get_local $$164)
   )
   (set_local $$160
    (get_local $$162)
   )
   (set_local $$161
-   (get_local $$683)
+   (get_local $$684)
   )
-  (set_local $$684
+  (set_local $$685
    (get_local $$160)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$685
+  (set_local $$686
    (get_local $$161)
   )
   (i32.store
-   (get_local $$684)
    (get_local $$685)
+   (get_local $$686)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$686
+  (set_local $$687
    (i32.load
     (get_local $$162)
    )
@@ -19153,9 +19160,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
   (i32.store
    (get_local $$165)
-   (get_local $$686)
+   (get_local $$687)
   )
-  (set_local $$687
+  (set_local $$688
    (i32.load
     (get_local $$165)
    )
@@ -19163,61 +19170,61 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:82:0
   (i32.store
    (get_local $$416)
-   (get_local $$687)
+   (get_local $$688)
   )
-  (set_local $$688
+  (set_local $$689
    (i32.add
     (get_local $$506)
     (i32.const 12)
    )
   )
   (set_local $$159
-   (get_local $$688)
+   (get_local $$689)
   )
-  (set_local $$689
+  (set_local $$690
    (get_local $$159)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
-  (set_local $$690
+  (set_local $$691
    (i32.add
-    (get_local $$689)
+    (get_local $$690)
     (i32.const 4)
    )
   )
-  (set_local $$691
+  (set_local $$692
    (i32.load
-    (get_local $$690)
+    (get_local $$691)
    )
   )
   (set_local $$156
-   (get_local $$689)
+   (get_local $$690)
   )
   (set_local $$157
-   (get_local $$691)
+   (get_local $$692)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$692
+  (set_local $$693
    (get_local $$157)
   )
   (set_local $$153
    (get_local $$155)
   )
   (set_local $$154
-   (get_local $$692)
+   (get_local $$693)
   )
-  (set_local $$693
+  (set_local $$694
    (get_local $$153)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$694
+  (set_local $$695
    (get_local $$154)
   )
   (i32.store
-   (get_local $$693)
    (get_local $$694)
+   (get_local $$695)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$695
+  (set_local $$696
    (i32.load
     (get_local $$155)
    )
@@ -19225,9 +19232,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
   (i32.store
    (get_local $$158)
-   (get_local $$695)
+   (get_local $$696)
   )
-  (set_local $$696
+  (set_local $$697
    (i32.load
     (get_local $$158)
    )
@@ -19235,42 +19242,42 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:82:0
   (i32.store
    (get_local $$417)
-   (get_local $$696)
+   (get_local $$697)
   )
   (set_local $$152
    (get_local $$415)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:805:0
-  (set_local $$697
+  (set_local $$698
    (get_local $$152)
   )
   (set_local $$149
    (get_local $$151)
   )
   (set_local $$150
-   (get_local $$697)
+   (get_local $$698)
   )
-  (set_local $$698
+  (set_local $$699
    (get_local $$149)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:788:0
-  (set_local $$699
+  (set_local $$700
    (get_local $$150)
   )
   (set_local $$148
-   (get_local $$699)
+   (get_local $$700)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:451:0
-  (set_local $$700
+  (set_local $$701
    (get_local $$148)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:788:0
   (i32.store
-   (get_local $$698)
-   (get_local $$700)
+   (get_local $$699)
+   (get_local $$701)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:805:0
-  (set_local $$701
+  (set_local $$702
    (i32.load
     (get_local $$151)
    )
@@ -19278,7 +19285,7 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:82:0
   (i32.store
    (get_local $$418)
-   (get_local $$701)
+   (get_local $$702)
   )
   (i32.store align=1
    (get_local $$114)
@@ -19314,13 +19321,13 @@
   (set_local $$107
    (get_local $$108)
   )
-  (set_local $$702
+  (set_local $$703
    (get_local $$107)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-  (set_local $$703
+  (set_local $$704
    (i32.load
-    (get_local $$702)
+    (get_local $$703)
    )
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1837:0
@@ -19339,13 +19346,13 @@
   (set_local $$69
    (get_local $$70)
   )
-  (set_local $$704
+  (set_local $$705
    (get_local $$69)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-  (set_local $$705
+  (set_local $$706
    (i32.load
-    (get_local $$704)
+    (get_local $$705)
    )
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1837:0
@@ -19368,7 +19375,7 @@
     (get_local $$68)
    )
   )
-  (set_local $$706
+  (set_local $$707
    (i32.load
     (get_local $$67)
    )
@@ -19376,7 +19383,7 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1837:0
   (i32.store
    (get_local $$112)
-   (get_local $$706)
+   (get_local $$707)
   )
   (i32.store align=1
    (get_local $$106)
@@ -19385,202 +19392,202 @@
    )
   )
   (set_local $$104
-   (get_local $$703)
+   (get_local $$704)
   )
   (set_local $$105
-   (get_local $$705)
+   (get_local $$706)
   )
   (loop $while-in1
    (block $while-out0
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1811:0
-    (set_local $$707
+    (set_local $$708
      (get_local $$104)
     )
-    (set_local $$708
+    (set_local $$709
      (get_local $$105)
     )
-    (set_local $$709
+    (set_local $$710
      (i32.ne
-      (get_local $$707)
       (get_local $$708)
+      (get_local $$709)
      )
     )
     (if
      (i32.eqz
-      (get_local $$709)
+      (get_local $$710)
      )
      (br $while-out0)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1812:0
-    (set_local $$710
+    (set_local $$711
      (get_local $$104)
     )
     (set_local $$102
      (get_local $$106)
     )
-    (set_local $$711
+    (set_local $$712
      (get_local $$102)
     )
     (set_local $$99
-     (get_local $$711)
+     (get_local $$712)
     )
     (set_local $$100
-     (get_local $$710)
+     (get_local $$711)
     )
-    (set_local $$712
+    (set_local $$713
      (get_local $$99)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:790:0
-    (set_local $$713
+    (set_local $$714
      (i32.load
-      (get_local $$712)
+      (get_local $$713)
      )
     )
-    (set_local $$714
+    (set_local $$715
      (get_local $$100)
     )
     (set_local $$96
-     (get_local $$713)
-    )
-    (set_local $$97
      (get_local $$714)
     )
-    (set_local $$715
+    (set_local $$97
+     (get_local $$715)
+    )
+    (set_local $$716
      (get_local $$96)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1590:0
-    (set_local $$716
+    (set_local $$717
      (i32.add
-      (get_local $$715)
+      (get_local $$716)
       (i32.const 4)
      )
     )
-    (set_local $$717
+    (set_local $$718
      (i32.load
-      (get_local $$716)
+      (get_local $$717)
      )
     )
     (set_local $$95
-     (get_local $$715)
+     (get_local $$716)
     )
-    (set_local $$718
+    (set_local $$719
      (get_local $$95)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:344:0
-    (set_local $$719
+    (set_local $$720
      (i32.add
-      (get_local $$718)
+      (get_local $$719)
       (i32.const 8)
      )
     )
     (set_local $$94
-     (get_local $$719)
-    )
-    (set_local $$720
-     (get_local $$94)
-    )
-    (set_local $$93
      (get_local $$720)
     )
     (set_local $$721
+     (get_local $$94)
+    )
+    (set_local $$93
+     (get_local $$721)
+    )
+    (set_local $$722
      (get_local $$93)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1590:0
-    (set_local $$722
-     (i32.load
-      (get_local $$721)
-     )
-    )
     (set_local $$723
-     (i32.ne
-      (get_local $$717)
+     (i32.load
       (get_local $$722)
      )
     )
+    (set_local $$724
+     (i32.ne
+      (get_local $$718)
+      (get_local $$723)
+     )
+    )
     (if
-     (get_local $$723)
+     (get_local $$724)
      (block
       (set_local $$90
        (get_local $$98)
       )
       (set_local $$91
-       (get_local $$715)
+       (get_local $$716)
       )
       (set_local $$92
        (i32.const 1)
       )
       (set_local $$73
-       (get_local $$715)
+       (get_local $$716)
       )
-      (set_local $$724
+      (set_local $$725
        (get_local $$73)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:338:0
-      (set_local $$725
+      (set_local $$726
        (i32.add
-        (get_local $$724)
+        (get_local $$725)
         (i32.const 8)
        )
       )
       (set_local $$72
-       (get_local $$725)
-      )
-      (set_local $$726
-       (get_local $$72)
-      )
-      (set_local $$71
        (get_local $$726)
       )
       (set_local $$727
+       (get_local $$72)
+      )
+      (set_local $$71
+       (get_local $$727)
+      )
+      (set_local $$728
        (get_local $$71)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1594:0
-      (set_local $$728
+      (set_local $$729
        (i32.add
-        (get_local $$715)
+        (get_local $$716)
         (i32.const 4)
        )
       )
-      (set_local $$729
+      (set_local $$730
        (i32.load
-        (get_local $$728)
+        (get_local $$729)
        )
       )
       (set_local $$74
-       (get_local $$729)
+       (get_local $$730)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1106:0
-      (set_local $$730
+      (set_local $$731
        (get_local $$74)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1594:0
-      (set_local $$731
+      (set_local $$732
        (get_local $$97)
       )
       (set_local $$85
-       (get_local $$727)
+       (get_local $$728)
       )
       (set_local $$86
-       (get_local $$730)
-      )
-      (set_local $$87
        (get_local $$731)
       )
+      (set_local $$87
+       (get_local $$732)
+      )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1562:0
-      (set_local $$732
+      (set_local $$733
        (get_local $$85)
       )
-      (set_local $$733
+      (set_local $$734
        (get_local $$86)
       )
-      (set_local $$734
+      (set_local $$735
        (get_local $$87)
       )
       (set_local $$84
-       (get_local $$734)
+       (get_local $$735)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-      (set_local $$735
+      (set_local $$736
        (get_local $$84)
       )
       (i32.store8
@@ -19590,69 +19597,69 @@
        )
       )
       (set_local $$80
-       (get_local $$732)
-      )
-      (set_local $$81
        (get_local $$733)
       )
+      (set_local $$81
+       (get_local $$734)
+      )
       (set_local $$82
-       (get_local $$735)
+       (get_local $$736)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1715:0
-      (set_local $$736
+      (set_local $$737
        (get_local $$80)
       )
-      (set_local $$737
+      (set_local $$738
        (get_local $$81)
       )
-      (set_local $$738
+      (set_local $$739
        (get_local $$82)
       )
       (set_local $$79
-       (get_local $$738)
+       (get_local $$739)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-      (set_local $$739
+      (set_local $$740
        (get_local $$79)
       )
       (set_local $$76
-       (get_local $$736)
-      )
-      (set_local $$77
        (get_local $$737)
       )
+      (set_local $$77
+       (get_local $$738)
+      )
       (set_local $$78
-       (get_local $$739)
+       (get_local $$740)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1805:0
-      (set_local $$740
+      (set_local $$741
        (get_local $$77)
       )
-      (set_local $$741
+      (set_local $$742
        (get_local $$78)
       )
       (set_local $$75
-       (get_local $$741)
+       (get_local $$742)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-      (set_local $$742
+      (set_local $$743
        (get_local $$75)
       )
       (i64.store align=4
-       (get_local $$740)
+       (get_local $$741)
        (i64.load align=4
-        (get_local $$742)
+        (get_local $$743)
        )
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1805:0
       (i32.store
        (i32.add
-        (get_local $$740)
+        (get_local $$741)
         (i32.const 8)
        )
        (i32.load
         (i32.add
-         (get_local $$742)
+         (get_local $$743)
          (i32.const 8)
         )
        )
@@ -19661,51 +19668,51 @@
        (get_local $$98)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1596:0
-      (set_local $$743
+      (set_local $$744
        (i32.add
-        (get_local $$715)
+        (get_local $$716)
         (i32.const 4)
        )
       )
-      (set_local $$744
+      (set_local $$745
        (i32.load
-        (get_local $$743)
+        (get_local $$744)
        )
       )
-      (set_local $$745
+      (set_local $$746
        (i32.add
-        (get_local $$744)
+        (get_local $$745)
         (i32.const 12)
        )
       )
       (i32.store
-       (get_local $$743)
-       (get_local $$745)
+       (get_local $$744)
+       (get_local $$746)
       )
      )
      (block
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1599:0
-      (set_local $$746
+      (set_local $$747
        (get_local $$97)
       )
       (call $__ZNSt3__26vectorIN6Engene4Math4Vec3ENS_9allocatorIS3_EEE21__push_back_slow_pathIRKS3_EEvOT_
-       (get_local $$715)
-       (get_local $$746)
+       (get_local $$716)
+       (get_local $$747)
       )
      )
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1811:0
-    (set_local $$747
+    (set_local $$748
      (get_local $$104)
     )
-    (set_local $$748
+    (set_local $$749
      (i32.add
-      (get_local $$747)
+      (get_local $$748)
       (i32.const 12)
      )
     )
     (set_local $$104
-     (get_local $$748)
+     (get_local $$749)
     )
     (set_local $$101
      (get_local $$106)
@@ -19720,7 +19727,7 @@
     (get_local $$106)
    )
   )
-  (set_local $$749
+  (set_local $$750
    (i32.load
     (get_local $$103)
    )
@@ -19728,9 +19735,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1837:0
   (i32.store
    (get_local $$109)
-   (get_local $$749)
+   (get_local $$750)
   )
-  (set_local $$750
+  (set_local $$751
    (i32.load
     (get_local $$109)
    )
@@ -19738,55 +19745,55 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:82:0
   (i32.store
    (get_local $$419)
-   (get_local $$750)
+   (get_local $$751)
   )
   (set_local $$66
    (get_local $$415)
   )
-  (set_local $$751
+  (set_local $$752
    (get_local $$66)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
-  (set_local $$752
+  (set_local $$753
    (i32.add
-    (get_local $$751)
+    (get_local $$752)
     (i32.const 4)
    )
   )
-  (set_local $$753
+  (set_local $$754
    (i32.load
-    (get_local $$752)
+    (get_local $$753)
    )
   )
   (set_local $$63
-   (get_local $$751)
+   (get_local $$752)
   )
   (set_local $$64
-   (get_local $$753)
+   (get_local $$754)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$754
+  (set_local $$755
    (get_local $$64)
   )
   (set_local $$60
    (get_local $$62)
   )
   (set_local $$61
-   (get_local $$754)
+   (get_local $$755)
   )
-  (set_local $$755
+  (set_local $$756
    (get_local $$60)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$756
+  (set_local $$757
    (get_local $$61)
   )
   (i32.store
-   (get_local $$755)
    (get_local $$756)
+   (get_local $$757)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$757
+  (set_local $$758
    (i32.load
     (get_local $$62)
    )
@@ -19794,9 +19801,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
   (i32.store
    (get_local $$65)
-   (get_local $$757)
+   (get_local $$758)
   )
-  (set_local $$758
+  (set_local $$759
    (i32.load
     (get_local $$65)
    )
@@ -19804,7 +19811,7 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:83:0
   (i32.store
    (get_local $$421)
-   (get_local $$758)
+   (get_local $$759)
   )
   (set_local $$36
    (get_local $$420)
@@ -19815,71 +19822,71 @@
   (set_local $$38
    (i32.const 0)
   )
-  (set_local $$759
+  (set_local $$760
    (get_local $$36)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1320:0
-  (set_local $$760
+  (set_local $$761
    (get_local $$37)
   )
   (set_local $$35
-   (get_local $$760)
+   (get_local $$761)
   )
-  (set_local $$761
+  (set_local $$762
    (get_local $$35)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-  (set_local $$762
+  (set_local $$763
    (i32.load
-    (get_local $$761)
+    (get_local $$762)
    )
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1320:0
   (i32.store
-   (get_local $$759)
-   (get_local $$762)
+   (get_local $$760)
+   (get_local $$763)
   )
   (set_local $$16
    (get_local $$506)
   )
-  (set_local $$763
+  (set_local $$764
    (get_local $$16)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
-  (set_local $$764
+  (set_local $$765
    (i32.load
-    (get_local $$763)
+    (get_local $$764)
    )
   )
   (set_local $$13
-   (get_local $$763)
-  )
-  (set_local $$14
    (get_local $$764)
   )
+  (set_local $$14
+   (get_local $$765)
+  )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$765
+  (set_local $$766
    (get_local $$14)
   )
   (set_local $$10
    (get_local $$12)
   )
   (set_local $$11
-   (get_local $$765)
+   (get_local $$766)
   )
-  (set_local $$766
+  (set_local $$767
    (get_local $$10)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$767
+  (set_local $$768
    (get_local $$11)
   )
   (i32.store
-   (get_local $$766)
    (get_local $$767)
+   (get_local $$768)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$768
+  (set_local $$769
    (i32.load
     (get_local $$12)
    )
@@ -19887,9 +19894,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
   (i32.store
    (get_local $$15)
-   (get_local $$768)
+   (get_local $$769)
   )
-  (set_local $$769
+  (set_local $$770
    (i32.load
     (get_local $$15)
    )
@@ -19897,55 +19904,55 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:83:0
   (i32.store
    (get_local $$422)
-   (get_local $$769)
+   (get_local $$770)
   )
   (set_local $$9
    (get_local $$506)
   )
-  (set_local $$770
+  (set_local $$771
    (get_local $$9)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
-  (set_local $$771
+  (set_local $$772
    (i32.add
-    (get_local $$770)
+    (get_local $$771)
     (i32.const 4)
    )
   )
-  (set_local $$772
+  (set_local $$773
    (i32.load
-    (get_local $$771)
+    (get_local $$772)
    )
   )
   (set_local $$6
-   (get_local $$770)
+   (get_local $$771)
   )
   (set_local $$7
-   (get_local $$772)
+   (get_local $$773)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$773
+  (set_local $$774
    (get_local $$7)
   )
   (set_local $$3
    (get_local $$5)
   )
   (set_local $$4
-   (get_local $$773)
+   (get_local $$774)
   )
-  (set_local $$774
+  (set_local $$775
    (get_local $$3)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$775
+  (set_local $$776
    (get_local $$4)
   )
   (i32.store
-   (get_local $$774)
    (get_local $$775)
+   (get_local $$776)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$776
+  (set_local $$777
    (i32.load
     (get_local $$5)
    )
@@ -19953,9 +19960,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
   (i32.store
    (get_local $$8)
-   (get_local $$776)
+   (get_local $$777)
   )
-  (set_local $$777
+  (set_local $$778
    (i32.load
     (get_local $$8)
    )
@@ -19963,7 +19970,7 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:83:0
   (i32.store
    (get_local $$423)
-   (get_local $$777)
+   (get_local $$778)
   )
   (i32.store
    (get_local $$$byval_copy8)
@@ -19983,7 +19990,7 @@
     (get_local $$423)
    )
   )
-  (set_local $$778
+  (set_local $$779
    (call $__ZNSt3__26vectorIN6Engene4Math4Vec3ENS_9allocatorIS3_EEE6insertINS_11__wrap_iterIPS3_EEEENS_9enable_ifIXaasr21__is_forward_iteratorIT_EE5valuesr16is_constructibleIS3_NS_15iterator_traitsISC_E9referenceEEE5valueESA_E4typeENS8_IPKS3_EESC_SC_
     (get_local $$415)
     (get_local $$$byval_copy8)
@@ -19993,7 +20000,7 @@
   )
   (i32.store
    (get_local $$424)
-   (get_local $$778)
+   (get_local $$779)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
   (set_local $$428
@@ -20011,14 +20018,14 @@
    (get_local $$$byval_copy11)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
-  (set_local $$779
+  (set_local $$780
    (i32.add
     (get_local $$427)
     (i32.const 24)
    )
   )
   (set_local $$428
-   (get_local $$779)
+   (get_local $$780)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:87:0
   (i32.store8
@@ -20028,29 +20035,8 @@
    )
   )
   (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__1vEET_
-   (get_local $$779)
+   (get_local $$780)
    (get_local $$$byval_copy12)
-  )
-  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
-  (set_local $$780
-   (i32.add
-    (get_local $$779)
-    (i32.const 24)
-   )
-  )
-  (set_local $$428
-   (get_local $$780)
-  )
-  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:88:0
-  (i32.store8
-   (get_local $$$byval_copy13)
-   (i32.load8_s
-    (get_local $$431)
-   )
-  )
-  (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__2vEET_
-   (get_local $$780)
-   (get_local $$$byval_copy13)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
   (set_local $$781
@@ -20062,16 +20048,16 @@
   (set_local $$428
    (get_local $$781)
   )
-  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:89:0
+  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:88:0
   (i32.store8
-   (get_local $$$byval_copy14)
+   (get_local $$$byval_copy13)
    (i32.load8_s
-    (get_local $$432)
+    (get_local $$431)
    )
   )
-  (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__3vEET_
+  (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__2vEET_
    (get_local $$781)
-   (get_local $$$byval_copy14)
+   (get_local $$$byval_copy13)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
   (set_local $$782
@@ -20083,16 +20069,16 @@
   (set_local $$428
    (get_local $$782)
   )
-  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:90:0
+  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:89:0
   (i32.store8
-   (get_local $$$byval_copy15)
+   (get_local $$$byval_copy14)
    (i32.load8_s
-    (get_local $$433)
+    (get_local $$432)
    )
   )
-  (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__4vEET_
+  (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__3vEET_
    (get_local $$782)
-   (get_local $$$byval_copy15)
+   (get_local $$$byval_copy14)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
   (set_local $$783
@@ -20104,6 +20090,27 @@
   (set_local $$428
    (get_local $$783)
   )
+  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:90:0
+  (i32.store8
+   (get_local $$$byval_copy15)
+   (i32.load8_s
+    (get_local $$433)
+   )
+  )
+  (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__4vEET_
+   (get_local $$783)
+   (get_local $$$byval_copy15)
+  )
+  ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
+  (set_local $$784
+   (i32.add
+    (get_local $$783)
+    (i32.const 24)
+   )
+  )
+  (set_local $$428
+   (get_local $$784)
+  )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:91:0
   (i32.store8
    (get_local $$$byval_copy16)
@@ -20112,7 +20119,7 @@
    )
   )
   (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2IZNS1_9Rendering8Renderer6RenderEP10GLFWwindowfE3__5vEET_
-   (get_local $$783)
+   (get_local $$784)
    (get_local $$$byval_copy16)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
@@ -20120,14 +20127,14 @@
    (get_local $$426)
    (get_local $$427)
   )
-  (set_local $$784
+  (set_local $$785
    (i32.add
     (get_local $$426)
     (i32.const 4)
    )
   )
   (i32.store
-   (get_local $$784)
+   (get_local $$785)
    (i32.const 6)
   )
   (i64.store align=1
@@ -20139,38 +20146,38 @@
   (set_local $$33
    (get_local $$425)
   )
-  (set_local $$785
+  (set_local $$786
    (get_local $$33)
   )
   (set_local $$31
-   (get_local $$785)
+   (get_local $$786)
   )
-  (set_local $$786
+  (set_local $$787
    (get_local $$31)
   )
   (set_local $$30
-   (get_local $$786)
+   (get_local $$787)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:421:0
-  (i32.store
-   (get_local $$786)
-   (i32.const 0)
-  )
-  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:422:0
-  (set_local $$787
-   (i32.add
-    (get_local $$786)
-    (i32.const 4)
-   )
-  )
   (i32.store
    (get_local $$787)
    (i32.const 0)
   )
-  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:423:0
+  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:422:0
   (set_local $$788
    (i32.add
-    (get_local $$786)
+    (get_local $$787)
+    (i32.const 4)
+   )
+  )
+  (i32.store
+   (get_local $$788)
+   (i32.const 0)
+  )
+  ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:423:0
+  (set_local $$789
+   (i32.add
+    (get_local $$787)
     (i32.const 8)
    )
   )
@@ -20179,145 +20186,145 @@
    (i32.const 0)
   )
   (set_local $$28
-   (get_local $$788)
+   (get_local $$789)
   )
   (set_local $$29
    (get_local $$32)
   )
-  (set_local $$789
+  (set_local $$790
    (get_local $$28)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:2187:0
-  (set_local $$790
+  (set_local $$791
    (get_local $$29)
   )
   (set_local $$27
-   (get_local $$790)
+   (get_local $$791)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-  (set_local $$791
+  (set_local $$792
    (get_local $$27)
   )
   (set_local $$23
-   (get_local $$789)
+   (get_local $$790)
   )
   (set_local $$24
-   (get_local $$791)
+   (get_local $$792)
   )
-  (set_local $$792
+  (set_local $$793
    (get_local $$23)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:2097:0
-  (set_local $$793
+  (set_local $$794
    (get_local $$24)
   )
   (set_local $$22
-   (get_local $$793)
+   (get_local $$794)
   )
   (i32.store
-   (get_local $$792)
+   (get_local $$793)
    (i32.const 0)
   )
   (set_local $$26
-   (get_local $$789)
+   (get_local $$790)
   )
-  (set_local $$794
+  (set_local $$795
    (get_local $$26)
   )
   (set_local $$25
-   (get_local $$794)
+   (get_local $$795)
   )
   (set_local $$21
    (get_local $$34)
   )
-  (set_local $$795
+  (set_local $$796
    (get_local $$21)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\initializer_list:85:0
-  (set_local $$796
+  (set_local $$797
    (i32.add
-    (get_local $$795)
+    (get_local $$796)
     (i32.const 4)
    )
   )
-  (set_local $$797
+  (set_local $$798
    (i32.load
-    (get_local $$796)
+    (get_local $$797)
    )
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1286:0
-  (set_local $$798
+  (set_local $$799
    (i32.gt_u
-    (get_local $$797)
+    (get_local $$798)
     (i32.const 0)
    )
   )
   (if
-   (get_local $$798)
+   (get_local $$799)
    (block
     (set_local $$20
      (get_local $$34)
     )
-    (set_local $$799
+    (set_local $$800
      (get_local $$20)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\initializer_list:85:0
-    (set_local $$800
+    (set_local $$801
      (i32.add
-      (get_local $$799)
+      (get_local $$800)
       (i32.const 4)
      )
     )
-    (set_local $$801
+    (set_local $$802
      (i32.load
-      (get_local $$800)
+      (get_local $$801)
      )
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1288:0
     (call $__ZNSt3__26vectorINS_8functionIFbN6Engene4Math4Vec3EEEENS_9allocatorIS6_EEE8allocateEm
-     (get_local $$785)
-     (get_local $$801)
+     (get_local $$786)
+     (get_local $$802)
     )
     (set_local $$17
      (get_local $$34)
     )
-    (set_local $$802
+    (set_local $$803
      (get_local $$17)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\initializer_list:89:0
-    (set_local $$803
+    (set_local $$804
      (i32.load
-      (get_local $$802)
+      (get_local $$803)
      )
     )
     (set_local $$18
      (get_local $$34)
     )
-    (set_local $$804
+    (set_local $$805
      (get_local $$18)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\initializer_list:93:0
-    (set_local $$805
-     (i32.load
-      (get_local $$804)
-     )
-    )
     (set_local $$806
-     (i32.add
-      (get_local $$804)
-      (i32.const 4)
+     (i32.load
+      (get_local $$805)
      )
     )
     (set_local $$807
-     (i32.load
-      (get_local $$806)
+     (i32.add
+      (get_local $$805)
+      (i32.const 4)
      )
     )
     (set_local $$808
+     (i32.load
+      (get_local $$807)
+     )
+    )
+    (set_local $$809
      (i32.add
-      (get_local $$805)
+      (get_local $$806)
       (i32.mul
-       (get_local $$807)
+       (get_local $$808)
        (i32.const 24)
       )
      )
@@ -20325,62 +20332,62 @@
     (set_local $$19
      (get_local $$34)
     )
-    (set_local $$809
+    (set_local $$810
      (get_local $$19)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\initializer_list:85:0
-    (set_local $$810
+    (set_local $$811
      (i32.add
-      (get_local $$809)
+      (get_local $$810)
       (i32.const 4)
      )
     )
-    (set_local $$811
+    (set_local $$812
      (i32.load
-      (get_local $$810)
+      (get_local $$811)
      )
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1289:0
     (call $__ZNSt3__26vectorINS_8functionIFbN6Engene4Math4Vec3EEEENS_9allocatorIS6_EEE18__construct_at_endIPKS6_EENS_9enable_ifIXsr21__is_forward_iteratorIT_EE5valueEvE4typeESE_SE_m
-     (get_local $$785)
-     (get_local $$803)
-     (get_local $$808)
-     (get_local $$811)
+     (get_local $$786)
+     (get_local $$804)
+     (get_local $$809)
+     (get_local $$812)
     )
    )
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:85:0
-  (set_local $$812
+  (set_local $$813
    (i32.add
     (get_local $$427)
     (i32.const 144)
    )
   )
-  (set_local $$814
-   (get_local $$812)
+  (set_local $$815
+   (get_local $$813)
   )
   (loop $while-in3
    (block $while-out2
-    (set_local $$813
+    (set_local $$814
      (i32.add
-      (get_local $$814)
+      (get_local $$815)
       (i32.const -24)
      )
     )
     (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEED2Ev
-     (get_local $$813)
+     (get_local $$814)
     )
-    (set_local $$815
+    (set_local $$816
      (i32.eq
-      (get_local $$813)
+      (get_local $$814)
       (get_local $$427)
      )
     )
     (if
-     (get_local $$815)
+     (get_local $$816)
      (br $while-out2)
-     (set_local $$814
-      (get_local $$813)
+     (set_local $$815
+      (get_local $$814)
      )
     )
     (br $while-in3)
@@ -20390,50 +20397,50 @@
   (set_local $$435
    (get_local $$425)
   )
-  (set_local $$816
+  (set_local $$817
    (get_local $$435)
   )
   (set_local $$45
-   (get_local $$816)
+   (get_local $$817)
   )
-  (set_local $$817
+  (set_local $$818
    (get_local $$45)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
-  (set_local $$818
+  (set_local $$819
    (i32.load
-    (get_local $$817)
+    (get_local $$818)
    )
   )
   (set_local $$42
-   (get_local $$817)
-  )
-  (set_local $$43
    (get_local $$818)
   )
+  (set_local $$43
+   (get_local $$819)
+  )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$819
+  (set_local $$820
    (get_local $$43)
   )
   (set_local $$39
    (get_local $$41)
   )
   (set_local $$40
-   (get_local $$819)
+   (get_local $$820)
   )
-  (set_local $$820
+  (set_local $$821
    (get_local $$39)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$821
+  (set_local $$822
    (get_local $$40)
   )
   (i32.store
-   (get_local $$820)
    (get_local $$821)
+   (get_local $$822)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$822
+  (set_local $$823
    (i32.load
     (get_local $$41)
    )
@@ -20441,9 +20448,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
   (i32.store
    (get_local $$44)
-   (get_local $$822)
+   (get_local $$823)
   )
-  (set_local $$823
+  (set_local $$824
    (i32.load
     (get_local $$44)
    )
@@ -20451,58 +20458,58 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:93:0
   (i32.store
    (get_local $$436)
-   (get_local $$823)
-  )
-  (set_local $$824
-   (get_local $$435)
-  )
-  (set_local $$52
    (get_local $$824)
   )
   (set_local $$825
+   (get_local $$435)
+  )
+  (set_local $$52
+   (get_local $$825)
+  )
+  (set_local $$826
    (get_local $$52)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
-  (set_local $$826
+  (set_local $$827
    (i32.add
-    (get_local $$825)
+    (get_local $$826)
     (i32.const 4)
    )
   )
-  (set_local $$827
+  (set_local $$828
    (i32.load
-    (get_local $$826)
+    (get_local $$827)
    )
   )
   (set_local $$49
-   (get_local $$825)
+   (get_local $$826)
   )
   (set_local $$50
-   (get_local $$827)
+   (get_local $$828)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$828
+  (set_local $$829
    (get_local $$50)
   )
   (set_local $$46
    (get_local $$48)
   )
   (set_local $$47
-   (get_local $$828)
+   (get_local $$829)
   )
-  (set_local $$829
+  (set_local $$830
    (get_local $$46)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-  (set_local $$830
+  (set_local $$831
    (get_local $$47)
   )
   (i32.store
-   (get_local $$829)
    (get_local $$830)
+   (get_local $$831)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-  (set_local $$831
+  (set_local $$832
    (i32.load
     (get_local $$48)
    )
@@ -20510,9 +20517,9 @@
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
   (i32.store
    (get_local $$51)
-   (get_local $$831)
+   (get_local $$832)
   )
-  (set_local $$832
+  (set_local $$833
    (i32.load
     (get_local $$51)
    )
@@ -20520,7 +20527,7 @@
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:93:0
   (i32.store
    (get_local $$437)
-   (get_local $$832)
+   (get_local $$833)
   )
   (loop $while-in5
    (block $while-out4
@@ -20531,122 +20538,122 @@
      (get_local $$437)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
-    (set_local $$833
+    (set_local $$834
      (get_local $$57)
     )
-    (set_local $$834
+    (set_local $$835
      (get_local $$58)
     )
     (set_local $$55
-     (get_local $$833)
-    )
-    (set_local $$56
      (get_local $$834)
     )
+    (set_local $$56
+     (get_local $$835)
+    )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
-    (set_local $$835
+    (set_local $$836
      (get_local $$55)
     )
     (set_local $$54
-     (get_local $$835)
+     (get_local $$836)
     )
-    (set_local $$836
+    (set_local $$837
      (get_local $$54)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-    (set_local $$837
+    (set_local $$838
      (i32.load
-      (get_local $$836)
+      (get_local $$837)
      )
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
-    (set_local $$838
+    (set_local $$839
      (get_local $$56)
     )
     (set_local $$53
-     (get_local $$838)
+     (get_local $$839)
     )
-    (set_local $$839
+    (set_local $$840
      (get_local $$53)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-    (set_local $$840
-     (i32.load
-      (get_local $$839)
-     )
-    )
-    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
     (set_local $$841
-     (i32.eq
-      (get_local $$837)
+     (i32.load
       (get_local $$840)
      )
     )
-    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
+    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
     (set_local $$842
-     (i32.xor
+     (i32.eq
+      (get_local $$838)
       (get_local $$841)
+     )
+    )
+    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
+    (set_local $$843
+     (i32.xor
+      (get_local $$842)
       (i32.const 1)
      )
     )
     (if
      (i32.eqz
-      (get_local $$842)
+      (get_local $$843)
      )
      (br $while-out4)
     )
     (set_local $$59
      (get_local $$436)
     )
-    (set_local $$843
+    (set_local $$844
      (get_local $$59)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1355:0
-    (set_local $$844
+    (set_local $$845
      (i32.load
-      (get_local $$843)
+      (get_local $$844)
      )
     )
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:93:0
     (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2ERKS5_
      (get_local $$438)
-     (get_local $$844)
+     (get_local $$845)
     )
     (set_local $$128
      (get_local $$439)
     )
-    (set_local $$845
+    (set_local $$846
      (get_local $$128)
     )
     (set_local $$126
-     (get_local $$845)
+     (get_local $$846)
     )
-    (set_local $$846
+    (set_local $$847
      (get_local $$126)
     )
     (set_local $$125
-     (get_local $$846)
+     (get_local $$847)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:421:0
-    (i32.store
-     (get_local $$846)
-     (i32.const 0)
-    )
-    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:422:0
-    (set_local $$847
-     (i32.add
-      (get_local $$846)
-      (i32.const 4)
-     )
-    )
     (i32.store
      (get_local $$847)
      (i32.const 0)
     )
-    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:423:0
+    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:422:0
     (set_local $$848
      (i32.add
-      (get_local $$846)
+      (get_local $$847)
+      (i32.const 4)
+     )
+    )
+    (i32.store
+     (get_local $$848)
+     (i32.const 0)
+    )
+    ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:423:0
+    (set_local $$849
+     (i32.add
+      (get_local $$847)
       (i32.const 8)
      )
     )
@@ -20655,95 +20662,95 @@
      (i32.const 0)
     )
     (set_local $$123
-     (get_local $$848)
+     (get_local $$849)
     )
     (set_local $$124
      (get_local $$127)
     )
-    (set_local $$849
+    (set_local $$850
      (get_local $$123)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:2187:0
-    (set_local $$850
+    (set_local $$851
      (get_local $$124)
     )
     (set_local $$122
-     (get_local $$850)
+     (get_local $$851)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-    (set_local $$851
+    (set_local $$852
      (get_local $$122)
     )
     (set_local $$118
-     (get_local $$849)
+     (get_local $$850)
     )
     (set_local $$119
-     (get_local $$851)
+     (get_local $$852)
     )
-    (set_local $$852
+    (set_local $$853
      (get_local $$118)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:2097:0
-    (set_local $$853
+    (set_local $$854
      (get_local $$119)
     )
     (set_local $$117
-     (get_local $$853)
+     (get_local $$854)
     )
     (i32.store
-     (get_local $$852)
+     (get_local $$853)
      (i32.const 0)
     )
     (set_local $$121
-     (get_local $$849)
+     (get_local $$850)
     )
-    (set_local $$854
+    (set_local $$855
      (get_local $$121)
     )
     (set_local $$120
-     (get_local $$854)
+     (get_local $$855)
     )
     (set_local $$135
      (get_local $$415)
     )
-    (set_local $$855
+    (set_local $$856
      (get_local $$135)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
-    (set_local $$856
+    (set_local $$857
      (i32.load
-      (get_local $$855)
+      (get_local $$856)
      )
     )
     (set_local $$132
-     (get_local $$855)
-    )
-    (set_local $$133
      (get_local $$856)
     )
+    (set_local $$133
+     (get_local $$857)
+    )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-    (set_local $$857
+    (set_local $$858
      (get_local $$133)
     )
     (set_local $$129
      (get_local $$131)
     )
     (set_local $$130
-     (get_local $$857)
+     (get_local $$858)
     )
-    (set_local $$858
+    (set_local $$859
      (get_local $$129)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-    (set_local $$859
+    (set_local $$860
      (get_local $$130)
     )
     (i32.store
-     (get_local $$858)
      (get_local $$859)
+     (get_local $$860)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-    (set_local $$860
+    (set_local $$861
      (i32.load
       (get_local $$131)
      )
@@ -20751,9 +20758,9 @@
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1471:0
     (i32.store
      (get_local $$134)
-     (get_local $$860)
+     (get_local $$861)
     )
-    (set_local $$861
+    (set_local $$862
      (i32.load
       (get_local $$134)
      )
@@ -20761,55 +20768,55 @@
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:96:0
     (i32.store
      (get_local $$440)
-     (get_local $$861)
+     (get_local $$862)
     )
     (set_local $$142
      (get_local $$415)
     )
-    (set_local $$862
+    (set_local $$863
      (get_local $$142)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
-    (set_local $$863
+    (set_local $$864
      (i32.add
-      (get_local $$862)
+      (get_local $$863)
       (i32.const 4)
      )
     )
-    (set_local $$864
+    (set_local $$865
      (i32.load
-      (get_local $$863)
+      (get_local $$864)
      )
     )
     (set_local $$139
-     (get_local $$862)
+     (get_local $$863)
     )
     (set_local $$140
-     (get_local $$864)
+     (get_local $$865)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-    (set_local $$865
+    (set_local $$866
      (get_local $$140)
     )
     (set_local $$136
      (get_local $$138)
     )
     (set_local $$137
-     (get_local $$865)
+     (get_local $$866)
     )
-    (set_local $$866
+    (set_local $$867
      (get_local $$136)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1420:0
-    (set_local $$867
+    (set_local $$868
      (get_local $$137)
     )
     (i32.store
-     (get_local $$866)
      (get_local $$867)
+     (get_local $$868)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1450:0
-    (set_local $$868
+    (set_local $$869
      (i32.load
       (get_local $$138)
      )
@@ -20817,9 +20824,9 @@
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1487:0
     (i32.store
      (get_local $$141)
-     (get_local $$868)
+     (get_local $$869)
     )
-    (set_local $$869
+    (set_local $$870
      (i32.load
       (get_local $$141)
      )
@@ -20827,42 +20834,42 @@
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:96:0
     (i32.store
      (get_local $$441)
-     (get_local $$869)
+     (get_local $$870)
     )
     (set_local $$147
      (get_local $$439)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:805:0
-    (set_local $$870
+    (set_local $$871
      (get_local $$147)
     )
     (set_local $$144
      (get_local $$146)
     )
     (set_local $$145
-     (get_local $$870)
+     (get_local $$871)
     )
-    (set_local $$871
+    (set_local $$872
      (get_local $$144)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:788:0
-    (set_local $$872
+    (set_local $$873
      (get_local $$145)
     )
     (set_local $$143
-     (get_local $$872)
+     (get_local $$873)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:451:0
-    (set_local $$873
+    (set_local $$874
      (get_local $$143)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:788:0
     (i32.store
-     (get_local $$871)
-     (get_local $$873)
+     (get_local $$872)
+     (get_local $$874)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:805:0
-    (set_local $$874
+    (set_local $$875
      (i32.load
       (get_local $$146)
      )
@@ -20870,7 +20877,7 @@
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:96:0
     (i32.store
      (get_local $$442)
-     (get_local $$874)
+     (get_local $$875)
     )
     (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEEC2ERKS5_
      (get_local $$443)
@@ -20903,86 +20910,86 @@
        (get_local $$211)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
-      (set_local $$875
+      (set_local $$876
        (get_local $$206)
       )
-      (set_local $$876
+      (set_local $$877
        (get_local $$207)
       )
       (set_local $$204
-       (get_local $$875)
-      )
-      (set_local $$205
        (get_local $$876)
       )
+      (set_local $$205
+       (get_local $$877)
+      )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
-      (set_local $$877
+      (set_local $$878
        (get_local $$204)
       )
       (set_local $$203
-       (get_local $$877)
+       (get_local $$878)
       )
-      (set_local $$878
+      (set_local $$879
        (get_local $$203)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-      (set_local $$879
+      (set_local $$880
        (i32.load
-        (get_local $$878)
+        (get_local $$879)
        )
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
-      (set_local $$880
+      (set_local $$881
        (get_local $$205)
       )
       (set_local $$202
-       (get_local $$880)
+       (get_local $$881)
       )
-      (set_local $$881
+      (set_local $$882
        (get_local $$202)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1411:0
-      (set_local $$882
-       (i32.load
-        (get_local $$881)
-       )
-      )
-      ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
       (set_local $$883
-       (i32.eq
-        (get_local $$879)
+       (i32.load
         (get_local $$882)
        )
       )
-      ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
+      ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1506:0
       (set_local $$884
-       (i32.xor
+       (i32.eq
+        (get_local $$880)
         (get_local $$883)
+       )
+      )
+      ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1558:0
+      (set_local $$885
+       (i32.xor
+        (get_local $$884)
         (i32.const 1)
        )
       )
       (if
        (i32.eqz
-        (get_local $$884)
+        (get_local $$885)
        )
        (br $while-out6)
       )
       (set_local $$169
        (get_local $$212)
       )
-      (set_local $$885
+      (set_local $$886
        (get_local $$169)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1355:0
-      (set_local $$886
+      (set_local $$887
        (i32.load
-        (get_local $$885)
+        (get_local $$886)
        )
       )
       (i64.store align=4
        (get_local $$209)
        (i64.load align=4
-        (get_local $$886)
+        (get_local $$887)
        )
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\algorithm:1892:0
@@ -20993,7 +21000,7 @@
        )
        (i32.load
         (i32.add
-         (get_local $$886)
+         (get_local $$887)
          (i32.const 8)
         )
        )
@@ -21016,193 +21023,193 @@
         )
        )
       )
-      (set_local $$887
+      (set_local $$888
        (call $__ZNKSt3__28functionIFbN6Engene4Math4Vec3EEEclES3_
         (get_local $$443)
         (get_local $$$byval_copy17)
        )
       )
       (if
-       (get_local $$887)
+       (get_local $$888)
        (block
         (set_local $$167
          (get_local $$212)
         )
-        (set_local $$888
+        (set_local $$889
          (get_local $$167)
         )
         ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1355:0
-        (set_local $$889
+        (set_local $$890
          (i32.load
-          (get_local $$888)
+          (get_local $$889)
          )
         )
         (set_local $$168
          (get_local $$210)
         )
-        (set_local $$890
+        (set_local $$891
          (get_local $$168)
         )
         (set_local $$198
-         (get_local $$890)
+         (get_local $$891)
         )
         (set_local $$199
-         (get_local $$889)
+         (get_local $$890)
         )
-        (set_local $$891
+        (set_local $$892
          (get_local $$198)
         )
         ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:790:0
-        (set_local $$892
+        (set_local $$893
          (i32.load
-          (get_local $$891)
+          (get_local $$892)
          )
         )
-        (set_local $$893
+        (set_local $$894
          (get_local $$199)
         )
         (set_local $$195
-         (get_local $$892)
-        )
-        (set_local $$196
          (get_local $$893)
         )
-        (set_local $$894
+        (set_local $$196
+         (get_local $$894)
+        )
+        (set_local $$895
          (get_local $$195)
         )
         ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1590:0
-        (set_local $$895
+        (set_local $$896
          (i32.add
-          (get_local $$894)
+          (get_local $$895)
           (i32.const 4)
          )
         )
-        (set_local $$896
+        (set_local $$897
          (i32.load
-          (get_local $$895)
+          (get_local $$896)
          )
         )
         (set_local $$194
-         (get_local $$894)
+         (get_local $$895)
         )
-        (set_local $$897
+        (set_local $$898
          (get_local $$194)
         )
         ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:344:0
-        (set_local $$898
+        (set_local $$899
          (i32.add
-          (get_local $$897)
+          (get_local $$898)
           (i32.const 8)
          )
         )
         (set_local $$193
-         (get_local $$898)
-        )
-        (set_local $$899
-         (get_local $$193)
-        )
-        (set_local $$192
          (get_local $$899)
         )
         (set_local $$900
+         (get_local $$193)
+        )
+        (set_local $$192
+         (get_local $$900)
+        )
+        (set_local $$901
          (get_local $$192)
         )
         ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1590:0
-        (set_local $$901
-         (i32.load
-          (get_local $$900)
-         )
-        )
         (set_local $$902
-         (i32.ne
-          (get_local $$896)
+         (i32.load
           (get_local $$901)
          )
         )
+        (set_local $$903
+         (i32.ne
+          (get_local $$897)
+          (get_local $$902)
+         )
+        )
         (if
-         (get_local $$902)
+         (get_local $$903)
          (block
           (set_local $$189
            (get_local $$197)
           )
           (set_local $$190
-           (get_local $$894)
+           (get_local $$895)
           )
           (set_local $$191
            (i32.const 1)
           )
           (set_local $$172
-           (get_local $$894)
+           (get_local $$895)
           )
-          (set_local $$903
+          (set_local $$904
            (get_local $$172)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:338:0
-          (set_local $$904
+          (set_local $$905
            (i32.add
-            (get_local $$903)
+            (get_local $$904)
             (i32.const 8)
            )
           )
           (set_local $$171
-           (get_local $$904)
-          )
-          (set_local $$905
-           (get_local $$171)
-          )
-          (set_local $$170
            (get_local $$905)
           )
           (set_local $$906
+           (get_local $$171)
+          )
+          (set_local $$170
+           (get_local $$906)
+          )
+          (set_local $$907
            (get_local $$170)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1594:0
-          (set_local $$907
+          (set_local $$908
            (i32.add
-            (get_local $$894)
+            (get_local $$895)
             (i32.const 4)
            )
           )
-          (set_local $$908
+          (set_local $$909
            (i32.load
-            (get_local $$907)
+            (get_local $$908)
            )
           )
           (set_local $$173
-           (get_local $$908)
+           (get_local $$909)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1106:0
-          (set_local $$909
+          (set_local $$910
            (get_local $$173)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1594:0
-          (set_local $$910
+          (set_local $$911
            (get_local $$196)
           )
           (set_local $$184
-           (get_local $$906)
+           (get_local $$907)
           )
           (set_local $$185
-           (get_local $$909)
-          )
-          (set_local $$186
            (get_local $$910)
           )
+          (set_local $$186
+           (get_local $$911)
+          )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1562:0
-          (set_local $$911
+          (set_local $$912
            (get_local $$184)
           )
-          (set_local $$912
+          (set_local $$913
            (get_local $$185)
           )
-          (set_local $$913
+          (set_local $$914
            (get_local $$186)
           )
           (set_local $$183
-           (get_local $$913)
+           (get_local $$914)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-          (set_local $$914
+          (set_local $$915
            (get_local $$183)
           )
           (i32.store8
@@ -21212,69 +21219,69 @@
            )
           )
           (set_local $$179
-           (get_local $$911)
-          )
-          (set_local $$180
            (get_local $$912)
           )
+          (set_local $$180
+           (get_local $$913)
+          )
           (set_local $$181
-           (get_local $$914)
+           (get_local $$915)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1715:0
-          (set_local $$915
+          (set_local $$916
            (get_local $$179)
           )
-          (set_local $$916
+          (set_local $$917
            (get_local $$180)
           )
-          (set_local $$917
+          (set_local $$918
            (get_local $$181)
           )
           (set_local $$178
-           (get_local $$917)
+           (get_local $$918)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-          (set_local $$918
+          (set_local $$919
            (get_local $$178)
           )
           (set_local $$175
-           (get_local $$915)
-          )
-          (set_local $$176
            (get_local $$916)
           )
+          (set_local $$176
+           (get_local $$917)
+          )
           (set_local $$177
-           (get_local $$918)
+           (get_local $$919)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1805:0
-          (set_local $$919
+          (set_local $$920
            (get_local $$176)
           )
-          (set_local $$920
+          (set_local $$921
            (get_local $$177)
           )
           (set_local $$174
-           (get_local $$920)
+           (get_local $$921)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\type_traits:2301:0
-          (set_local $$921
+          (set_local $$922
            (get_local $$174)
           )
           (i64.store align=4
-           (get_local $$919)
+           (get_local $$920)
            (i64.load align=4
-            (get_local $$921)
+            (get_local $$922)
            )
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\memory:1805:0
           (i32.store
            (i32.add
-            (get_local $$919)
+            (get_local $$920)
             (i32.const 8)
            )
            (i32.load
             (i32.add
-             (get_local $$921)
+             (get_local $$922)
              (i32.const 8)
             )
            )
@@ -21283,36 +21290,36 @@
            (get_local $$197)
           )
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1596:0
-          (set_local $$922
+          (set_local $$923
            (i32.add
-            (get_local $$894)
+            (get_local $$895)
             (i32.const 4)
            )
           )
-          (set_local $$923
+          (set_local $$924
            (i32.load
-            (get_local $$922)
+            (get_local $$923)
            )
           )
-          (set_local $$924
+          (set_local $$925
            (i32.add
-            (get_local $$923)
+            (get_local $$924)
             (i32.const 12)
            )
           )
           (i32.store
-           (get_local $$922)
-           (get_local $$924)
+           (get_local $$923)
+           (get_local $$925)
           )
          )
          (block
           ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1599:0
-          (set_local $$925
+          (set_local $$926
            (get_local $$196)
           )
           (call $__ZNSt3__26vectorIN6Engene4Math4Vec3ENS_9allocatorIS3_EEE21__push_back_slow_pathIRKS3_EEvOT_
-           (get_local $$894)
-           (get_local $$925)
+           (get_local $$895)
+           (get_local $$926)
           )
          )
         )
@@ -21324,24 +21331,24 @@
       (set_local $$201
        (get_local $$212)
       )
-      (set_local $$926
+      (set_local $$927
        (get_local $$201)
       )
       ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1371:0
-      (set_local $$927
+      (set_local $$928
        (i32.load
-        (get_local $$926)
+        (get_local $$927)
        )
       )
-      (set_local $$928
+      (set_local $$929
        (i32.add
-        (get_local $$927)
+        (get_local $$928)
         (i32.const 12)
        )
       )
       (i32.store
-       (get_local $$926)
-       (get_local $$928)
+       (get_local $$927)
+       (get_local $$929)
       )
       (br $while-in7)
      )
@@ -21353,7 +21360,7 @@
       (get_local $$210)
      )
     )
-    (set_local $$929
+    (set_local $$930
      (i32.load
       (get_local $$208)
      )
@@ -21361,7 +21368,7 @@
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:96:0
     (i32.store
      (get_local $$444)
-     (get_local $$929)
+     (get_local $$930)
     )
     (call $__ZNSt3__28functionIFbN6Engene4Math4Vec3EEED2Ev
      (get_local $$443)
@@ -21372,23 +21379,23 @@
     (set_local $$226
      (i32.const 0)
     )
-    (set_local $$930
+    (set_local $$931
      (get_local $$225)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1504:0
-    (set_local $$931
+    (set_local $$932
      (i32.load
-      (get_local $$930)
+      (get_local $$931)
      )
     )
-    (set_local $$932
+    (set_local $$933
      (get_local $$226)
     )
-    (set_local $$933
+    (set_local $$934
      (i32.add
-      (get_local $$931)
+      (get_local $$932)
       (i32.mul
-       (get_local $$932)
+       (get_local $$933)
        (i32.const 12)
       )
      )
@@ -21396,7 +21403,7 @@
     (i64.store align=4
      (get_local $$446)
      (i64.load align=4
-      (get_local $$933)
+      (get_local $$934)
      )
     )
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:98:0
@@ -21407,7 +21414,7 @@
      )
      (i32.load
       (i32.add
-       (get_local $$933)
+       (get_local $$934)
        (i32.const 8)
       )
      )
@@ -21441,23 +21448,23 @@
     (set_local $$228
      (i32.const 1)
     )
-    (set_local $$934
+    (set_local $$935
      (get_local $$227)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1504:0
-    (set_local $$935
+    (set_local $$936
      (i32.load
-      (get_local $$934)
+      (get_local $$935)
      )
     )
-    (set_local $$936
+    (set_local $$937
      (get_local $$228)
     )
-    (set_local $$937
+    (set_local $$938
      (i32.add
-      (get_local $$935)
+      (get_local $$936)
       (i32.mul
-       (get_local $$936)
+       (get_local $$937)
        (i32.const 12)
       )
      )
@@ -21465,7 +21472,7 @@
     (i64.store align=4
      (get_local $$448)
      (i64.load align=4
-      (get_local $$937)
+      (get_local $$938)
      )
     )
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:99:0
@@ -21476,7 +21483,7 @@
      )
      (i32.load
       (i32.add
-       (get_local $$937)
+       (get_local $$938)
        (i32.const 8)
       )
      )
@@ -21510,23 +21517,23 @@
     (set_local $$230
      (i32.const 2)
     )
-    (set_local $$938
+    (set_local $$939
      (get_local $$229)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1504:0
-    (set_local $$939
+    (set_local $$940
      (i32.load
-      (get_local $$938)
+      (get_local $$939)
      )
     )
-    (set_local $$940
+    (set_local $$941
      (get_local $$230)
     )
-    (set_local $$941
+    (set_local $$942
      (i32.add
-      (get_local $$939)
+      (get_local $$940)
       (i32.mul
-       (get_local $$940)
+       (get_local $$941)
        (i32.const 12)
       )
      )
@@ -21534,7 +21541,7 @@
     (i64.store align=4
      (get_local $$450)
      (i64.load align=4
-      (get_local $$941)
+      (get_local $$942)
      )
     )
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:100:0
@@ -21545,7 +21552,7 @@
      )
      (i32.load
       (i32.add
-       (get_local $$941)
+       (get_local $$942)
        (i32.const 8)
       )
      )
@@ -21579,23 +21586,23 @@
     (set_local $$232
      (i32.const 3)
     )
-    (set_local $$942
+    (set_local $$943
      (get_local $$231)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1504:0
-    (set_local $$943
+    (set_local $$944
      (i32.load
-      (get_local $$942)
+      (get_local $$943)
      )
     )
-    (set_local $$944
+    (set_local $$945
      (get_local $$232)
     )
-    (set_local $$945
+    (set_local $$946
      (i32.add
-      (get_local $$943)
+      (get_local $$944)
       (i32.mul
-       (get_local $$944)
+       (get_local $$945)
        (i32.const 12)
       )
      )
@@ -21603,7 +21610,7 @@
     (i64.store align=4
      (get_local $$452)
      (i64.load align=4
-      (get_local $$945)
+      (get_local $$946)
      )
     )
     ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:101:0
@@ -21614,7 +21621,7 @@
      )
      (i32.load
       (i32.add
-       (get_local $$945)
+       (get_local $$946)
        (i32.const 8)
       )
      )
@@ -22644,30 +22651,30 @@
     (set_local $$235
      (get_local $$436)
     )
-    (set_local $$946
+    (set_local $$947
      (get_local $$235)
     )
     ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\iterator:1371:0
-    (set_local $$947
+    (set_local $$948
      (i32.load
-      (get_local $$946)
+      (get_local $$947)
      )
     )
-    (set_local $$948
+    (set_local $$949
      (i32.add
-      (get_local $$947)
+      (get_local $$948)
       (i32.const 24)
      )
     )
     (i32.store
-     (get_local $$946)
-     (get_local $$948)
+     (get_local $$947)
+     (get_local $$949)
     )
     (br $while-in5)
    )
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:126:0
-  (set_local $$949
+  (set_local $$950
    (i32.add
     (get_local $$506)
     (i32.const 24)
@@ -22676,7 +22683,7 @@
   (i64.store align=4
    (get_local $$482)
    (i64.load align=4
-    (get_local $$949)
+    (get_local $$950)
    )
   )
   (i32.store
@@ -22686,12 +22693,12 @@
    )
    (i32.load
     (i32.add
-     (get_local $$949)
+     (get_local $$950)
      (i32.const 8)
     )
    )
   )
-  (set_local $$950
+  (set_local $$951
    (i32.add
     (get_local $$506)
     (i32.const 24)
@@ -22700,7 +22707,7 @@
   (i64.store align=4
    (get_local $$483)
    (i64.load align=4
-    (get_local $$950)
+    (get_local $$951)
    )
   )
   (i32.store
@@ -22710,7 +22717,7 @@
    )
    (i32.load
     (i32.add
-     (get_local $$950)
+     (get_local $$951)
      (i32.const 8)
     )
    )
@@ -22795,35 +22802,35 @@
    (get_local $$$byval_copy48)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:127:0
-  (set_local $$951
+  (set_local $$952
    (i32.add
     (get_local $$506)
     (i32.const 36)
    )
   )
   (set_local $$295
-   (get_local $$951)
+   (get_local $$952)
   )
   (set_local $$296
    (i32.const 0)
   )
-  (set_local $$952
+  (set_local $$953
    (get_local $$295)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1504:0
-  (set_local $$953
+  (set_local $$954
    (i32.load
-    (get_local $$952)
+    (get_local $$953)
    )
   )
-  (set_local $$954
+  (set_local $$955
    (get_local $$296)
   )
-  (set_local $$955
+  (set_local $$956
    (i32.add
-    (get_local $$953)
+    (get_local $$954)
     (i32.mul
-     (get_local $$954)
+     (get_local $$955)
      (i32.const 12)
     )
    )
@@ -22831,7 +22838,7 @@
   (i64.store align=4
    (get_local $$486)
    (i64.load align=4
-    (get_local $$955)
+    (get_local $$956)
    )
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:127:0
@@ -22842,12 +22849,12 @@
    )
    (i32.load
     (i32.add
-     (get_local $$955)
+     (get_local $$956)
      (i32.const 8)
     )
    )
   )
-  (set_local $$956
+  (set_local $$957
    (i32.add
     (get_local $$506)
     (i32.const 24)
@@ -22856,7 +22863,7 @@
   (i64.store align=4
    (get_local $$487)
    (i64.load align=4
-    (get_local $$956)
+    (get_local $$957)
    )
   )
   (i32.store
@@ -22866,7 +22873,7 @@
    )
    (i32.load
     (i32.add
-     (get_local $$956)
+     (get_local $$957)
      (i32.const 8)
     )
    )
@@ -22951,35 +22958,35 @@
    (get_local $$$byval_copy51)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:128:0
-  (set_local $$957
+  (set_local $$958
    (i32.add
     (get_local $$506)
     (i32.const 36)
    )
   )
   (set_local $$297
-   (get_local $$957)
+   (get_local $$958)
   )
   (set_local $$298
    (i32.const 1)
   )
-  (set_local $$958
+  (set_local $$959
    (get_local $$297)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1504:0
-  (set_local $$959
+  (set_local $$960
    (i32.load
-    (get_local $$958)
+    (get_local $$959)
    )
   )
-  (set_local $$960
+  (set_local $$961
    (get_local $$298)
   )
-  (set_local $$961
+  (set_local $$962
    (i32.add
-    (get_local $$959)
+    (get_local $$960)
     (i32.mul
-     (get_local $$960)
+     (get_local $$961)
      (i32.const 12)
     )
    )
@@ -22987,7 +22994,7 @@
   (i64.store align=4
    (get_local $$490)
    (i64.load align=4
-    (get_local $$961)
+    (get_local $$962)
    )
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:128:0
@@ -22998,12 +23005,12 @@
    )
    (i32.load
     (i32.add
-     (get_local $$961)
+     (get_local $$962)
      (i32.const 8)
     )
    )
   )
-  (set_local $$962
+  (set_local $$963
    (i32.add
     (get_local $$506)
     (i32.const 24)
@@ -23012,7 +23019,7 @@
   (i64.store align=4
    (get_local $$491)
    (i64.load align=4
-    (get_local $$962)
+    (get_local $$963)
    )
   )
   (i32.store
@@ -23022,7 +23029,7 @@
    )
    (i32.load
     (i32.add
-     (get_local $$962)
+     (get_local $$963)
      (i32.const 8)
     )
    )
@@ -23107,35 +23114,35 @@
    (get_local $$$byval_copy54)
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:129:0
-  (set_local $$963
+  (set_local $$964
    (i32.add
     (get_local $$506)
     (i32.const 36)
    )
   )
   (set_local $$299
-   (get_local $$963)
+   (get_local $$964)
   )
   (set_local $$300
    (i32.const 2)
   )
-  (set_local $$964
+  (set_local $$965
    (get_local $$299)
   )
   ;;@ C:\Gert\Code\Builds\emsdk\emscripten\1.38.15\system\include\libcxx\vector:1504:0
-  (set_local $$965
+  (set_local $$966
    (i32.load
-    (get_local $$964)
+    (get_local $$965)
    )
   )
-  (set_local $$966
+  (set_local $$967
    (get_local $$300)
   )
-  (set_local $$967
+  (set_local $$968
    (i32.add
-    (get_local $$965)
+    (get_local $$966)
     (i32.mul
-     (get_local $$966)
+     (get_local $$967)
      (i32.const 12)
     )
    )
@@ -23143,7 +23150,7 @@
   (i64.store align=4
    (get_local $$494)
    (i64.load align=4
-    (get_local $$967)
+    (get_local $$968)
    )
   )
   ;;@ C:\Gert\Code\Personal\Engene\src\rendering\renderer.cpp:129:0
@@ -23154,12 +23161,12 @@
    )
    (i32.load
     (i32.add
-     (get_local $$967)
+     (get_local $$968)
      (i32.const 8)
     )
    )
   )
-  (set_local $$968
+  (set_local $$969
    (i32.add
     (get_local $$506)
     (i32.const 24)
@@ -23168,7 +23175,7 @@
   (i64.store align=4
    (get_local $$495)
    (i64.load align=4
-    (get_local $$968)
+    (get_local $$969)
    )
   )
   (i32.store
@@ -23178,7 +23185,7 @@
    )
    (i32.load
     (i32.add
-     (get_local $$968)
+     (get_local $$969)
      (i32.const 8)
     )
    )
