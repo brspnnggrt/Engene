@@ -66,7 +66,7 @@ int Renderer::Render(GLFWwindow *win, float count)
 
     Projector projector = Projector(200, Math::Vec3 { WIDTH / 2, HEIGHT / 2, 0.0f });
 
-    Math::Mat4 rotation = Projector::CreateRotationMatrix(Projector::Axis::Z, count);
+    Math::Mat4 rotation = Projector::CreateRotationMatrix(Projector::Axis::Z, count / 4);
 
     for (auto vector : cubeTall)
     {
