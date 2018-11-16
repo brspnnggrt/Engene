@@ -58,7 +58,7 @@ int Renderer::Render(GLFWwindow *win, float count)
     }
     renderTimeStamp = nowTimeStamp;
 
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(255.0f, 255.0f, 255.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     Math::Vec3 objectLocation = {0.0f, 0.0f, 0.0f};
@@ -75,7 +75,7 @@ int Renderer::Render(GLFWwindow *win, float count)
         Math::Vec3 projectedVector = projector.Project(vector, objectLocation, viewingLocation);
         // projectedVector *= rotation;
         // Draw
-        Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::BLACK);
     }
 
     std::vector<Math::Vec3> points;
@@ -113,13 +113,13 @@ int Renderer::Render(GLFWwindow *win, float count)
         // projectedVector7 = projector.Project(projectedVector7, objectLocation, viewingLocation);
         // projectedVector8 = projector.Project(projectedVector8, objectLocation, viewingLocation);
         
-        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector2, Drawing::DrawBoard::Color::WHITE);
-        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector3, Drawing::DrawBoard::Color::WHITE);
-        Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::WHITE);
-        Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::WHITE);
-        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector6, Drawing::DrawBoard::Color::WHITE);
-        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector7, Drawing::DrawBoard::Color::WHITE);
-        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector8, Drawing::DrawBoard::Color::WHITE);
+        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector2, Drawing::DrawBoard::Color::BLACK);
+        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector3, Drawing::DrawBoard::Color::BLACK);
+        Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::BLACK);
+        Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::BLACK);
+        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector6, Drawing::DrawBoard::Color::BLACK);
+        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector7, Drawing::DrawBoard::Color::BLACK);
+        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector8, Drawing::DrawBoard::Color::BLACK);
     }
 
     // Project
