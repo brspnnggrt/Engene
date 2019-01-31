@@ -206,6 +206,18 @@
     };
   </script>
   <script async type="text/javascript" src="./web/engene.js"></script>
+  <script>
+    function resize(){    
+      var aspectRatio = 1;
+      canvas.height = canvas.width * aspectRatio;
+    }
+    window.addEventListener('load', function() {
+      resize();
+      window.addEventListener("resize", function(){                      
+          resize();
+      });
+    }, false);
+    </script>
 </body>
 
 </html>
