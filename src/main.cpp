@@ -19,7 +19,7 @@ Engene::Rendering::Renderer renderer = Engene::Rendering::Renderer();
 void StartRenderingEngene() {
     /* Render here */
     count += 0.05f;
-    int a = renderer.Render(window, count);
+    renderer.Render(window, count);
     
     /* Swap front and back buffers */
     glfwSwapBuffers(window);

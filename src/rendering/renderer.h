@@ -3,7 +3,9 @@
 #include <chrono>
 #include "../drawing/mesh.h"
 #include "../math/mat4.h"
+#include "../rendering/projector.h"
 #include <GLFW/glfw3.h>
+#include <map>
 
 namespace Engene
 {
@@ -27,7 +29,9 @@ public:
   static constexpr float WIDTH = 400;
   static constexpr float HEIGHT = 400;
   Renderer();
-  int Render(GLFWwindow *win, float count);
+  void Render(GLFWwindow *win, float count);
+  void DrawOrigin(Projector projector, Math::Vec3 viewingLocation);
+  void DrawVectorArray(Projector projector, Math::Vec3 objectLocation, Math::Vec3 viewingLocation, std::vector<std::map<std::string, Math::Vec3>> vectors);
 };
 
 } //  namespace Rendering

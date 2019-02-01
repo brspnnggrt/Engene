@@ -3,10 +3,12 @@
 #include "../drawing/draw.h"
 #include "../math/triangle.h"
 #include "../math/vec3.h"
+#include "../utils/utils.h"
 #include "projector.h"
 #include <GLFW/glfw3.h>
 #include <math.h>
 #include <vector>
+#include <map>
 #include <algorithm>
 #include <functional>
 
@@ -45,7 +47,7 @@ Renderer::Renderer()
         {0.0f, 0.0f, 1.0f}};
 };
 
-int Renderer::Render(GLFWwindow *win, float count)
+void Renderer::Render(GLFWwindow *win, float count)
 {
     std::chrono::system_clock::time_point nowTimeStamp = std::chrono::system_clock::now();
     std::chrono::duration<double> timepassed = renderTimeStamp - nowTimeStamp;
@@ -68,60 +70,22 @@ int Renderer::Render(GLFWwindow *win, float count)
 
     Math::Mat4 rotation = Projector::CreateRotationMatrix(Projector::Axis::Z, count / 4);
 
-    for (auto vector : cubeTall)
-    {
-        vector *= rotation;
-        // Project
-        Math::Vec3 projectedVector = projector.Project(vector, objectLocation, viewingLocation);
-        // projectedVector *= rotation;
-        // Draw
-        Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::BLACK);
-    }
+    auto transform = [rotation](Math::Vec3 vector) { 
+        return std::map<std::string, Math::Vec3> { { "model", vector }, { "projection", vector * rotation } };
+    };
 
-    std::vector<Math::Vec3> points;
-    std::copy(cubeTall.begin(), cubeTall.end(), std::back_inserter(points));
-    points.insert( points.end(), cubeLittle.begin(), cubeLittle.end() );
+    std::vector<std::map<std::string, Math::Vec3>> cubeTallProjected = map(cubeTall, transform);
+    std::vector<std::map<std::string, Math::Vec3>> cubeLittleProjected = map(cubeLittle, transform);
 
-    std::vector<std::function<bool(Math::Vec3 vector)>> tests = {
-        [](Math::Vec3 vector) { return vector.z == 0; },
-        [](Math::Vec3 vector) { return vector.z == 1; },
-        [](Math::Vec3 vector) { return vector.x == 0; },
-        [](Math::Vec3 vector) { return vector.x == 1; },
-        [](Math::Vec3 vector) { return vector.y == 0; },
-        [](Math::Vec3 vector) { return vector.y == 1; }};
+    DrawOrigin(projector, viewingLocation);
+    DrawVectorArray(projector, objectLocation, viewingLocation, cubeTallProjected);
+    DrawVectorArray(projector, objectLocation, viewingLocation, cubeLittleProjected);
 
-    for (auto test : tests)
-    {
-        std::vector<Math::Vec3> bottom;
-        std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
+    return;
+}
 
-        Math::Vec3 projectedVector1 = bottom[0] * rotation;
-        Math::Vec3 projectedVector2 = bottom[1] * rotation;
-        Math::Vec3 projectedVector3 = bottom[2] * rotation;
-        Math::Vec3 projectedVector4 = bottom[3] * rotation;
-        // Math::Vec3 projectedVector5 = bottom[4] * rotation;
-        // Math::Vec3 projectedVector6 = bottom[5] * rotation;
-        // Math::Vec3 projectedVector7 = bottom[6] * rotation;
-        // Math::Vec3 projectedVector8 = bottom[7] * rotation;
-
-        projectedVector1 = projector.Project(projectedVector1, objectLocation, viewingLocation);
-        projectedVector2 = projector.Project(projectedVector2, objectLocation, viewingLocation);
-        projectedVector3 = projector.Project(projectedVector3, objectLocation, viewingLocation);
-        projectedVector4 = projector.Project(projectedVector4, objectLocation, viewingLocation);
-        // projectedVector5 = projector.Project(projectedVector5, objectLocation, viewingLocation);
-        // projectedVector6 = projector.Project(projectedVector6, objectLocation, viewingLocation);
-        // projectedVector7 = projector.Project(projectedVector7, objectLocation, viewingLocation);
-        // projectedVector8 = projector.Project(projectedVector8, objectLocation, viewingLocation);
-        
-        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector2, Drawing::DrawBoard::Color::BLACK);
-        Drawing::DrawBoard::DrawLine(projectedVector1, projectedVector3, Drawing::DrawBoard::Color::BLACK);
-        Drawing::DrawBoard::DrawLine(projectedVector2, projectedVector4, Drawing::DrawBoard::Color::BLACK);
-        Drawing::DrawBoard::DrawLine(projectedVector3, projectedVector4, Drawing::DrawBoard::Color::BLACK);
-        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector6, Drawing::DrawBoard::Color::BLACK);
-        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector7, Drawing::DrawBoard::Color::BLACK);
-        // Drawing::DrawBoard::DrawLine(projectedVector5, projectedVector8, Drawing::DrawBoard::Color::BLACK);
-    }
-
+void Renderer::DrawOrigin(Projector projector, Math::Vec3 viewingLocation)
+{
     // Project
     Math::Vec3 projectedOrigin = projector.Project(origin, origin, viewingLocation);
     Math::Vec3 projectedBasis1 = projector.Project(basis[0], origin, viewingLocation);
@@ -132,8 +96,46 @@ int Renderer::Render(GLFWwindow *win, float count)
     Drawing::DrawBoard::DrawLine(projectedOrigin, projectedBasis1, Drawing::DrawBoard::Color::RED);
     Drawing::DrawBoard::DrawLine(projectedOrigin, projectedBasis2, Drawing::DrawBoard::Color::GREEN);
     Drawing::DrawBoard::DrawLine(projectedOrigin, projectedBasis3, Drawing::DrawBoard::Color::BLUE);
+}
 
-    return 1;
+void Renderer::DrawVectorArray(Projector projector, Math::Vec3 objectLocation, Math::Vec3 viewingLocation, std::vector<std::map<std::string, Math::Vec3>> vectors)
+{
+    for (auto vector : vectors)
+    {
+        // Project
+        Math::Vec3 projectedVector = projector.Project(vector["projection"], objectLocation, viewingLocation);
+        // Draw
+        Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::BLACK);
+    }
+
+    std::vector<std::map<std::string, Math::Vec3>> points;
+    std::copy(vectors.begin(), vectors.end(), std::back_inserter(points));
+    // points.insert( points.end(), cubeLittle.begin(), cubeLittle.end() );
+
+    std::vector<std::function<bool(std::map<std::string, Math::Vec3> vector)>> tests = {
+        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].z == 0; },
+        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].z == 1; },
+        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].x == 0; },
+        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].x == 1; },
+        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].y == 0; },
+        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].y == 1; }};
+
+    for (auto test : tests)
+    {
+        std::vector<std::map<std::string, Math::Vec3>> bottom;
+        std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
+
+        bottom[0]["projected"] = projector.Project(bottom[0]["projected"], objectLocation, viewingLocation);
+        bottom[1]["projected"] = projector.Project(bottom[1]["projected"], objectLocation, viewingLocation);
+        bottom[2]["projected"] = projector.Project(bottom[2]["projected"], objectLocation, viewingLocation);
+        bottom[3]["projected"] = projector.Project(bottom[3]["projected"], objectLocation, viewingLocation);
+        
+        Drawing::DrawBoard::DrawLine(bottom[0]["projected"], bottom[1]["projected"], Drawing::DrawBoard::Color::BLACK);
+        Drawing::DrawBoard::DrawLine(bottom[0]["projected"], bottom[2]["projected"], Drawing::DrawBoard::Color::BLACK);
+        Drawing::DrawBoard::DrawLine(bottom[1]["projected"], bottom[3]["projected"], Drawing::DrawBoard::Color::BLACK);
+        Drawing::DrawBoard::DrawLine(bottom[2]["projected"], bottom[3]["projected"], Drawing::DrawBoard::Color::BLACK);
+    }
+
 }
 
 } //  namespace Rendering
