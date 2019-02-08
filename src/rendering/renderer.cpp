@@ -77,9 +77,9 @@ void Renderer::Render(GLFWwindow *win, float count)
     std::vector<std::map<std::string, Math::Vec3>> cubeTallProjected = map(cubeTall, transform);
     std::vector<std::map<std::string, Math::Vec3>> cubeLittleProjected = map(cubeLittle, transform);
 
-    DrawOrigin(projector, viewingLocation);
     DrawVectorArray(projector, objectLocation, viewingLocation, cubeTallProjected);
-    // DrawVectorArray(projector, objectLocation, viewingLocation, cubeLittleProjected);
+    DrawVectorArray(projector, objectLocation, viewingLocation, cubeLittleProjected);
+    DrawOrigin(projector, viewingLocation);
 
     return;
 }
