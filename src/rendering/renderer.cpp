@@ -79,7 +79,7 @@ void Renderer::Render(GLFWwindow *win, float count)
 
     DrawOrigin(projector, viewingLocation);
     DrawVectorArray(projector, objectLocation, viewingLocation, cubeTallProjected);
-    DrawVectorArray(projector, objectLocation, viewingLocation, cubeLittleProjected);
+    // DrawVectorArray(projector, objectLocation, viewingLocation, cubeLittleProjected);
 
     return;
 }
@@ -100,42 +100,20 @@ void Renderer::DrawOrigin(Projector projector, Math::Vec3 viewingLocation)
 
 void Renderer::DrawVectorArray(Projector projector, Math::Vec3 objectLocation, Math::Vec3 viewingLocation, std::vector<std::map<std::string, Math::Vec3>> vectors)
 {
+    Math::Vec3 projectedOrigin = projector.Project(origin, origin, viewingLocation);
     for (auto vector : vectors)
     {
         // Project
         Math::Vec3 projectedVector = projector.Project(vector["projection"], objectLocation, viewingLocation);
         // Draw
         Drawing::DrawBoard::DrawCircle(projectedVector, 2, Drawing::DrawBoard::Color::BLACK);
+
+        for (auto vector2 : vectors)
+        {
+            Math::Vec3 projectedVector2 = projector.Project(vector2["projection"], objectLocation, viewingLocation);
+            Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::BLACK);
+        }
     }
-
-    std::vector<std::map<std::string, Math::Vec3>> points;
-    std::copy(vectors.begin(), vectors.end(), std::back_inserter(points));
-    // points.insert( points.end(), cubeLittle.begin(), cubeLittle.end() );
-
-    std::vector<std::function<bool(std::map<std::string, Math::Vec3> vector)>> tests = {
-        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].z == 0; },
-        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].z == 1; },
-        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].x == 0; },
-        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].x == 1; },
-        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].y == 0; },
-        [](std::map<std::string, Math::Vec3> vector) { return vector["model"].y == 1; }};
-
-    for (auto test : tests)
-    {
-        std::vector<std::map<std::string, Math::Vec3>> bottom;
-        std::copy_if(points.begin(), points.end(), std::back_inserter(bottom), test);
-
-        bottom[0]["projected"] = projector.Project(bottom[0]["projected"], objectLocation, viewingLocation);
-        bottom[1]["projected"] = projector.Project(bottom[1]["projected"], objectLocation, viewingLocation);
-        bottom[2]["projected"] = projector.Project(bottom[2]["projected"], objectLocation, viewingLocation);
-        bottom[3]["projected"] = projector.Project(bottom[3]["projected"], objectLocation, viewingLocation);
-        
-        Drawing::DrawBoard::DrawLine(bottom[0]["projected"], bottom[1]["projected"], Drawing::DrawBoard::Color::BLACK);
-        Drawing::DrawBoard::DrawLine(bottom[0]["projected"], bottom[2]["projected"], Drawing::DrawBoard::Color::BLACK);
-        Drawing::DrawBoard::DrawLine(bottom[1]["projected"], bottom[3]["projected"], Drawing::DrawBoard::Color::BLACK);
-        Drawing::DrawBoard::DrawLine(bottom[2]["projected"], bottom[3]["projected"], Drawing::DrawBoard::Color::BLACK);
-    }
-
 }
 
 } //  namespace Rendering
