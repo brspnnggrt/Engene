@@ -110,8 +110,11 @@ void Renderer::DrawVectorArray(Projector projector, Math::Vec3 objectLocation, M
 
         for (auto vector2 : vectors)
         {
-            Math::Vec3 projectedVector2 = projector.Project(vector2["projection"], objectLocation, viewingLocation);
-            Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::BLACK);
+            if (vector["model"] != vector2["model"]) 
+            {
+                Math::Vec3 projectedVector2 = projector.Project(vector2["projection"], objectLocation, viewingLocation);
+                Drawing::DrawBoard::DrawLine(projectedVector, projectedVector2, Drawing::DrawBoard::Color::BLACK);
+            }
         }
     }
 }
